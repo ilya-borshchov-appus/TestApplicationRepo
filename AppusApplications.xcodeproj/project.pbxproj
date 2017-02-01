@@ -18,7 +18,6 @@
 		FC7691771E2CD90A00DB6F38 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7691761E2CD90A00DB6F38 /* AppsViewController.swift */; };
 		FC76917A1E2CD90A00DB6F38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC7691781E2CD90A00DB6F38 /* Main.storyboard */; };
 		FC76917C1E2CD90A00DB6F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC76917B1E2CD90A00DB6F38 /* Assets.xcassets */; };
-		FC76917F1E2CD90A00DB6F38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC76917D1E2CD90A00DB6F38 /* LaunchScreen.storyboard */; };
 		FCCF68481E37879B000C52F5 /* languages_isoa2.csv in Resources */ = {isa = PBXBuildFile; fileRef = FCCF68471E37879B000C52F5 /* languages_isoa2.csv */; };
 		FCD33D271E42099C00BDE544 /* CSwiftV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD33D221E42099C00BDE544 /* CSwiftV.swift */; };
 		FCD33D281E42099C00BDE544 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD33D261E42099C00BDE544 /* FloatRatingView.swift */; };
@@ -41,7 +40,6 @@
 		FC7691761E2CD90A00DB6F38 /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		FC7691791E2CD90A00DB6F38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC76917B1E2CD90A00DB6F38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FC76917E1E2CD90A00DB6F38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC7691801E2CD90A00DB6F38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCCF68471E37879B000C52F5 /* languages_isoa2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = languages_isoa2.csv; sourceTree = "<group>"; };
 		FCD33D221E42099C00BDE544 /* CSwiftV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSwiftV.swift; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 				FC7691761E2CD90A00DB6F38 /* AppsViewController.swift */,
 				FC7691781E2CD90A00DB6F38 /* Main.storyboard */,
 				FC76917B1E2CD90A00DB6F38 /* Assets.xcassets */,
-				FC76917D1E2CD90A00DB6F38 /* LaunchScreen.storyboard */,
 				FC7691801E2CD90A00DB6F38 /* Info.plist */,
 			);
 			path = AppusApplications;
@@ -266,7 +263,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC76917F1E2CD90A00DB6F38 /* LaunchScreen.storyboard in Resources */,
 				A6BBC8121E2F737B005D1D68 /* apps_ids.txt in Resources */,
 				FCD33D2B1E4209F600BDE544 /* StarEmpty@2x.png in Resources */,
 				FC76917C1E2CD90A00DB6F38 /* Assets.xcassets in Resources */,
@@ -365,14 +361,6 @@
 				FC7691791E2CD90A00DB6F38 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		FC76917D1E2CD90A00DB6F38 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FC76917E1E2CD90A00DB6F38 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
