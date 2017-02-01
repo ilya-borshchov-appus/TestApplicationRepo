@@ -22,9 +22,7 @@ Pod::Spec.new do |s|
   s.frameworks             = 'Foundation', 'UIKit'
 
 s.resource_bundles = {
-    'AppApp' => [
-'AppusApplications/**/*.storyboard'
-]
+'AppApp' => ['AppusApplications/**/*.{lproj,storyboard}']
 }
 
 
