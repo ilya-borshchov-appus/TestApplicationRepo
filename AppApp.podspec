@@ -18,12 +18,12 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/ilya-borshchov-appus/TestApplicationRepo.git", :tag => "0.0.3" }
 
   s.source_files = "AppusApplications/**/*.{swift}"
-  s.resources = "AppusApplications/**/*.{png,jpeg,jpg,txt,csv}"
+  s.resources = "AppusApplications/**/*.{png,jpeg,jpg,txt,csv,storyboard,lproj}"
   s.frameworks             = 'Foundation', 'UIKit'
 
-s.resource_bundles = {
-'AppApp' => ['AppusApplications/**/*.{lproj,storyboard}']
-}
+#s.resource_bundles = {
+#'AppApp' => ['AppusApplications/**/*.{lproj,storyboard}']
+#}
 
 
   s.dependency "Alamofire"
