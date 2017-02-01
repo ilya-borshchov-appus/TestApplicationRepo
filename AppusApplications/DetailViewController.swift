@@ -110,7 +110,7 @@ class DetailViewController: UIViewController {
         self.detailDescription.text = self.selectedApp?.appDescription
         self.developerInfo.text = self.selectedApp?.companyName
         self.categoryInfo.text = self.selectedApp?.primaryGenre
-        self.updatedInfo.text = Date.dateWithMediumStyleFrom(string: (self.selectedApp?.currentVersionDate)!)
+        self.updatedInfo.text = Date.dateWithMediumStyleFrom((self.selectedApp?.currentVersionDate)!)
         
         //
         var iPhone = false
@@ -149,7 +149,7 @@ class DetailViewController: UIViewController {
         do {
             let content = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
             let csv = CSwiftV(with: content)
-            keyedRows = csv.rows as! [[String]]
+            keyedRows = csv.rows 
             
             
         } catch _ as NSError {
@@ -223,7 +223,7 @@ extension DetailViewController {
 }
 
 extension Date {
-    static func dateWithMediumStyleFrom(string: String) -> String {
+    static func dateWithMediumStyleFrom(_ string: String) -> String {
         var dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         guard let dateFromString = dateFormatter.date(from: string) else {

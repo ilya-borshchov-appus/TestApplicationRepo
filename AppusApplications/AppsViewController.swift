@@ -17,11 +17,11 @@ public enum DataSourceType {
     case developer(String)
 }
 
-public class AppsViewController: UIViewController {
+open class AppsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundView: UIImageView!
     
-    public var type: DataSourceType? = .developer("1065810792") {
+    open var type: DataSourceType? = .developer("1065810792") {
         didSet {
             self.initDataSource();
         }
@@ -30,7 +30,7 @@ public class AppsViewController: UIViewController {
     fileprivate var dataSource : [AppusApp] = []
     fileprivate let colorManager = ColorManager.shared
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
 //        self.testColorScheme()
@@ -63,9 +63,9 @@ public class AppsViewController: UIViewController {
 //        self.colorManager.purchaseButtonColor = UIColor.orange
 //    }
     
-    public static func sharedAppsViewController () -> AppsViewController {
+    open static func sharedAppsViewController () -> AppsViewController {
         let appStoryboard = UIStoryboard(name: "AppApp", bundle: Bundle.main)
-        return appStoryboard.instantiateViewController(withIdentifier: "AppsViewController")
+        return appStoryboard.instantiateViewController(withIdentifier: "AppsViewController") as! AppsViewController
     }
     
     fileprivate func setupTheme() {
@@ -125,7 +125,7 @@ public class AppsViewController: UIViewController {
     }
     
     // MARK: Segue    
-    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "detailSegue"){
             let destination = segue.destination as! DetailViewController
             destination.selectedApp = self.dataSource[((sender as! IndexPath).row)]

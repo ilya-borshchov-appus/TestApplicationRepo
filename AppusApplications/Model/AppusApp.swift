@@ -11,38 +11,38 @@ import SwiftyJSON
 
 class AppusApp: NSObject {
     // Image
-    private(set) var appImagePath = ""
-    private(set) var screenshots : [String] = []
+    fileprivate(set) var appImagePath = ""
+    fileprivate(set) var screenshots : [String] = []
     
     // Name
-    private(set) var appName = ""
-    private(set) var appCensoredName = ""
-    private(set) var companyName = ""
-    private(set) var sellerName = ""
+    fileprivate(set) var appName = ""
+    fileprivate(set) var appCensoredName = ""
+    fileprivate(set) var companyName = ""
+    fileprivate(set) var sellerName = ""
     
     // Details
-    private(set) var appDescription = ""
-    private(set) var genres : [String] = []
-    private(set) var primaryGenre = ""
-    private(set) var url = ""
-    private(set) var price = ""
-    private(set) var currency = ""
-    private(set) var languageCodes : [String] = []
-    private(set) var versionNumber = ""
-    private(set) var minVersion = ""
-    private(set) var suportedDevices : [String] = []
+    fileprivate(set) var appDescription = ""
+    fileprivate(set) var genres : [String] = []
+    fileprivate(set) var primaryGenre = ""
+    fileprivate(set) var url = ""
+    fileprivate(set) var price = ""
+    fileprivate(set) var currency = ""
+    fileprivate(set) var languageCodes : [String] = []
+    fileprivate(set) var versionNumber = ""
+    fileprivate(set) var minVersion = ""
+    fileprivate(set) var suportedDevices : [String] = []
     
     // Date
-    private(set) var date = ""
-    private(set) var currentVersionDate = ""
+    fileprivate(set) var date = ""
+    fileprivate(set) var currentVersionDate = ""
     
     // Rating
-    private(set) var currentRating = ""
-    private(set) var currrentAverageRating = ""
-    private(set) var averageRating = ""
-    private(set) var contentRating = ""
-    private(set) var contentAdvisoryRating = ""
-    private(set) var userRatingCount = ""
+    fileprivate(set) var currentRating = ""
+    fileprivate(set) var currrentAverageRating = ""
+    fileprivate(set) var averageRating = ""
+    fileprivate(set) var contentRating = ""
+    fileprivate(set) var contentAdvisoryRating = ""
+    fileprivate(set) var userRatingCount = ""
     
     override var description : String {
         var text = "Name: \(self.appName)\n"
@@ -55,7 +55,7 @@ class AppusApp: NSObject {
         return text
     }
 
-    func initWith(json: JSON) {
+    func initWith(_ json: JSON) {
         print (json)
         self.appImagePath = json["artworkUrl100"].stringValue
         self.screenshots = json["screenshotUrls"].arrayValue.map({$0.stringValue})
