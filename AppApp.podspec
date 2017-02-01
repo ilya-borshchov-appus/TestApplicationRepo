@@ -8,17 +8,17 @@
 
 Pod::Spec.new do |s|
   s.name         = "AppApp"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "AppApp allow you to use customisable page control with many featues"
   s.homepage     = "http://appus.pro"
   s.license      = { :type => "Apache", :file => "LICENSE" }
   s.author             = { "Ilya Borshchov" => "ilya.borshchov@appus.me" }
   s.platform     = :ios
   s.ios.deployment_target = "9.0"
-  s.source       = { :git => "https://github.com/ilya-borshchov-appus/TestApplicationRepo.git", :tag => "0.0.2" }
+  s.source       = { :git => "https://github.com/ilya-borshchov-appus/TestApplicationRepo.git", :tag => "0.0.3" }
 
   s.source_files = "AppusApplications/**/*.{swift}"
-  s.resources = "AppusApplications/**/*.{png,jpeg,jpg,storyboard,xib,txt,csv}"
+  s.resources = "AppusApplications/**/*.{png,jpeg,jpg,txt,csv}"
   s.frameworks             = 'Foundation', 'UIKit'
 
 s.resource_bundles = {
