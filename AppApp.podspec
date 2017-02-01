@@ -16,7 +16,13 @@ s.license      = { :type => "Apache", :file => "LICENSE" }
   s.platform     = :ios
   s.ios.deployment_target = “9.0”
   s.source       = { :git => "https://github.com/ilya-borshchov-appus/TestApplicationRepo.git", :tag => “0.0.1” }
-  s.source_files = "TestApplication", "TestApplication/*"
+
+  s.source_files = "AppusApplications/**/*.{swift}"
+  s.resources = "AppusApplications/**/*.{png,jpeg,jpg,storyboard,xib}"
   s.frameworks             = 'Foundation', 'UIKit'
+	
+  s.dependency 'Alamofire'
+  s.dependency 'AlamofireImage'
+  s.dependency 'SwiftyJSON'
   s.requires_arc = true
 end
