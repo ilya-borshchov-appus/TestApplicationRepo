@@ -20,9 +20,19 @@ Pod::Spec.new do |s|
   s.source_files = "AppusApplications/**/*.{swift}"
   s.resources = "AppusApplications/**/*.{png,jpeg,jpg,storyboard,xib,txt,csv}"
   s.frameworks             = 'Foundation', 'UIKit'
-	
+
+s.resource_bundles = {
+    'AppApp' => [
+'AppusApplications/**/*.storyboard'
+]
+}
+
+
   s.dependency "Alamofire"
   s.dependency "AlamofireImage"
   s.dependency "SwiftyJSON"
   s.requires_arc = true
 end
+
+
+

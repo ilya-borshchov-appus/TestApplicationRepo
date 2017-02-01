@@ -7,22 +7,32 @@
 #
 
 Pod::Spec.new do |s|
-  s.name         = "AppApp"
-  s.version      = "0.0.1"
-  s.summary      = "AppApp allow you to use customisable page control with many featues"
-  s.homepage     = "http://appus.pro"
-  s.license      = { :type => "Apache", :file => "LICENSE" }
-  s.author             = { "Ilya Borshchov" => "ilya.borshchov@appus.me" }
-  s.platform     = :ios
-  s.ios.deployment_target = "9.0"
-  s.source       = { :git => "https://github.com/ilya-borshchov-appus/TestApplicationRepo.git", :tag => "0.0.1" }
+s.name         = "AppApp"
+s.version      = "0.0.2"
+s.summary      = "AppApp allow you to use customisable page control with many featues"
+s.homepage     = "http://appus.pro"
+s.license      = { :type => "Apache", :file => "LICENSE" }
+s.author             = { "Ilya Borshchov" => "ilya.borshchov@appus.me" }
+s.platform     = :ios
+s.ios.deployment_target = "9.0"
+s.source       = { :git => "https://github.com/ilya-borshchov-appus/TestApplicationRepo.git", :tag => "0.0.2" }
 
-  s.source_files = "AppusApplications/**/*.{swift}"
-  s.resources = "AppusApplications/**/*.{png,jpeg,jpg,storyboard,xib}"
-  s.frameworks             = 'Foundation', 'UIKit'
-	
-  s.dependency "Alamofire"
-  s.dependency "AlamofireImage"
-  s.dependency "SwiftyJSON"
-  s.requires_arc = true
+s.source_files = "AppusApplications/**/*.{swift}"
+s.resources = "AppusApplications/**/*.{png,jpeg,jpg,storyboard,xib,txt,csv}"
+s.frameworks             = 'Foundation', 'UIKit'
+
+s.resource_bundles = {
+'AppApp' => [
+'AppusApplications/**/*.storyboard'
+]
+}
+
+
+s.dependency "Alamofire"
+s.dependency "AlamofireImage"
+s.dependency "SwiftyJSON"
+s.requires_arc = true
 end
+
+
+
