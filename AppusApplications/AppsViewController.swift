@@ -63,11 +63,6 @@ public class AppsViewController: UIViewController {
 //        self.colorManager.purchaseButtonColor = UIColor.orange
 //    }
     
-    public static func sharedAppsViewController () -> AppsViewController {
-        let appStoryboard = UIStoryboard(name: "AppApp", bundle: Bundle.main)
-        return appStoryboard.instantiateViewController(withIdentifier: "AppsViewController")
-    }
-    
     fileprivate func setupTheme() {
         if let navigationController = self.navigationController {
             let navBar = navigationController.navigationBar
