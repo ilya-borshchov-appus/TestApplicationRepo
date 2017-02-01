@@ -9,7 +9,7 @@
 import UIKit
 
 class ColorManager: NSObject {
-    public static let shared = ColorManager()
+    open static let shared = ColorManager()
     
     // MARK: UINavigationBar
     var isTransparentNavigationBar = false

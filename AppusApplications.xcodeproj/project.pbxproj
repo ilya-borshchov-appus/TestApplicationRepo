@@ -236,6 +236,7 @@
 					FC7691701E2CD90A00DB6F38 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 6H32342R79;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 					};
 				};
