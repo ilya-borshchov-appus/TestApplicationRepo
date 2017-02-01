@@ -21,8 +21,8 @@
 		FCCF68481E37879B000C52F5 /* languages_isoa2.csv in Resources */ = {isa = PBXBuildFile; fileRef = FCCF68471E37879B000C52F5 /* languages_isoa2.csv */; };
 		FCD33D271E42099C00BDE544 /* CSwiftV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD33D221E42099C00BDE544 /* CSwiftV.swift */; };
 		FCD33D281E42099C00BDE544 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD33D261E42099C00BDE544 /* FloatRatingView.swift */; };
-		FCD33D2B1E4209F600BDE544 /* StarEmpty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD33D291E4209F600BDE544 /* StarEmpty@2x.png */; };
-		FCD33D2C1E4209F600BDE544 /* StarFull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD33D2A1E4209F600BDE544 /* StarFull@2x.png */; };
+		FCD33D4D1E424AC400BDE544 /* StarEmpty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD33D4B1E424AC400BDE544 /* StarEmpty@2x.png */; };
+		FCD33D4E1E424AC400BDE544 /* StarFull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD33D4C1E424AC400BDE544 /* StarFull@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +44,8 @@
 		FCCF68471E37879B000C52F5 /* languages_isoa2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = languages_isoa2.csv; sourceTree = "<group>"; };
 		FCD33D221E42099C00BDE544 /* CSwiftV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSwiftV.swift; sourceTree = "<group>"; };
 		FCD33D261E42099C00BDE544 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
-		FCD33D291E4209F600BDE544 /* StarEmpty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StarEmpty@2x.png"; path = "../../../../../Feather52/Desktop/TestRep/AppusApplications/Resources/StarEmpty@2x.png"; sourceTree = "<group>"; };
-		FCD33D2A1E4209F600BDE544 /* StarFull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StarFull@2x.png"; path = "../../../../../Feather52/Desktop/TestRep/AppusApplications/Resources/StarFull@2x.png"; sourceTree = "<group>"; };
+		FCD33D4B1E424AC400BDE544 /* StarEmpty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StarEmpty@2x.png"; path = "../../../../../../Feather52/Desktop/Work/iTunesApplications/AppusApplications/Resources/StarEmpty@2x.png"; sourceTree = "<group>"; };
+		FCD33D4C1E424AC400BDE544 /* StarFull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StarFull@2x.png"; path = "../../../../../../Feather52/Desktop/Work/iTunesApplications/AppusApplications/Resources/StarFull@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +72,8 @@
 		A6BBC8101E2F7349005D1D68 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FCD33D291E4209F600BDE544 /* StarEmpty@2x.png */,
-				FCD33D2A1E4209F600BDE544 /* StarFull@2x.png */,
+				FCD33D4B1E424AC400BDE544 /* StarEmpty@2x.png */,
+				FCD33D4C1E424AC400BDE544 /* StarFull@2x.png */,
 				FCCF68471E37879B000C52F5 /* languages_isoa2.csv */,
 				A6BBC8111E2F737A005D1D68 /* apps_ids.txt */,
 			);
@@ -263,11 +263,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCD33D4D1E424AC400BDE544 /* StarEmpty@2x.png in Resources */,
+				FCD33D4E1E424AC400BDE544 /* StarFull@2x.png in Resources */,
 				A6BBC8121E2F737B005D1D68 /* apps_ids.txt in Resources */,
-				FCD33D2B1E4209F600BDE544 /* StarEmpty@2x.png in Resources */,
 				FC76917C1E2CD90A00DB6F38 /* Assets.xcassets in Resources */,
 				FCCF68481E37879B000C52F5 /* languages_isoa2.csv in Resources */,
-				FCD33D2C1E4209F600BDE544 /* StarFull@2x.png in Resources */,
 				FC76917A1E2CD90A00DB6F38 /* AppApp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
