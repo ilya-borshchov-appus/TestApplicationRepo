@@ -46,7 +46,7 @@ class ApplicationFactory: NSObject {
     }
     
     // http://uploadedit.com <- here you can upload file with .txt type and test this method
-    func getListOfApplicationsFromFileWith(_ url: String, completion: @escaping (_ list  : [AppusApp]?) -> Void) {
+    func getListOfApplicationsFromCloudWithFile(_ url: String, completion: @escaping (_ list  : [AppusApp]?) -> Void) {
         Alamofire.request(url)
             .validate(contentType: ["text/plain"])
             .response { response in

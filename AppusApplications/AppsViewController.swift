@@ -107,7 +107,7 @@ open class AppsViewController: UIViewController {
         case .file(let name):
             ApplicationFactory.sharedFactory.getListOfApplicationsFromFileWith(name: name, completion: self.completion)
         case .url(let url):
-            ApplicationFactory.sharedFactory.getListOfApplicationsFromFileWith(url: url, completion: self.completion)
+            ApplicationFactory.sharedFactory.getListOfApplicationsFromCloudWithFile(url: url, completion: self.completion)
         case .developer(let id):
             ApplicationFactory.sharedFactory.getListOfApplicationsForDeveloper(with: id, completion: self.completion)
         }
