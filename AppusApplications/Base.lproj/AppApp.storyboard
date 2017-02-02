@@ -32,7 +32,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0dB-8p-aJl" id="CrW-Nx-QmP">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="61"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VIG-Cb-XWw">
@@ -591,7 +591,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cwB-oc-DUO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oqQ-ro-fXe" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationViewControllerId" automaticallyAdjustsScrollViewInsets="NO" id="oqQ-ro-fXe" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cux-aI-YOT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
