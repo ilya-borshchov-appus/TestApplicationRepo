@@ -1,12 +1,12 @@
-iTunes Applications
+App Collection
 =====================
 
 Made by [![Appus Studio](https://github.com/appus-studio/Appus-Splash/blob/master/image/logo.png)](http://appus.pro)
 
-'iTunes Applications' show list of applications from iTunes with details.
+‘App Collection’ show list of applications from iTunes with details.
 
-![iTunes Applications: Show list of applications from iTunes with details](https://github.com/ilya-borshchov-appus/TestApplicationRepo/blob/master/AppusApplications/Resources/IMG_7827.PNG)
-![iTunes Applications: Show list of applications from iTunes with details](https://github.com/ilya-borshchov-appus/TestApplicationRepo/blob/master/AppusApplications/Resources/IMG_7828.PNG)
+![App Collection: Show list of applications from iTunes with details](https://github.com/ilya-borshchov-appus/TestApplicationRepo/blob/master/AppusApplications/Resources/IMG_7827.PNG)
+![App Collection: Show list of applications from iTunes with details](https://github.com/ilya-borshchov-appus/TestApplicationRepo/blob/master/AppusApplications/Resources/IMG_7828.PNG)
 
 #Setup
 ```Ruby
