@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1837587529BC3F6BD348E88F /* Pods_AppusApplications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F160896A61387DEB112CC3 /* Pods_AppusApplications.framework */; };
 		FCB1334E1E437457001C1112 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB133321E437457001C1112 /* AppsViewController.swift */; };
-		FCB1334F1E437457001C1112 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCB133331E437457001C1112 /* Assets.xcassets */; };
 		FCB133501E437457001C1112 /* AppApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCB133341E437457001C1112 /* AppApp.storyboard */; };
 		FCB133511E437457001C1112 /* ApplicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB133371E437457001C1112 /* ApplicationTableViewCell.swift */; };
 		FCB133521E437457001C1112 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB133381E437457001C1112 /* DetailCollectionViewCell.swift */; };
@@ -27,15 +26,15 @@
 		FCB1335E1E437457001C1112 /* StarFull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCB133471E437457001C1112 /* StarFull@2x.png */; };
 		FCB1335F1E437457001C1112 /* CSwiftV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1334B1E437457001C1112 /* CSwiftV.swift */; };
 		FCB133601E437457001C1112 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1334D1E437457001C1112 /* FloatRatingView.swift */; };
+		FCB133621E437529001C1112 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCB133611E437529001C1112 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3EB5F164A40F1D0C271BAC64 /* Pods-AppusApplications.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppusApplications.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppusApplications/Pods-AppusApplications.debug.xcconfig"; sourceTree = "<group>"; };
 		49F495E235BE65000F994A82 /* Pods-AppusApplications.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppusApplications.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppusApplications/Pods-AppusApplications.release.xcconfig"; sourceTree = "<group>"; };
 		83F160896A61387DEB112CC3 /* Pods_AppusApplications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppusApplications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC7691711E2CD90A00DB6F38 /* App Collection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "App Collection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC7691711E2CD90A00DB6F38 /* AppCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCB133321E437457001C1112 /* AppsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
-		FCB133331E437457001C1112 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCB133351E437457001C1112 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AppApp.storyboard; sourceTree = "<group>"; };
 		FCB133371E437457001C1112 /* ApplicationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationTableViewCell.swift; sourceTree = "<group>"; };
 		FCB133381E437457001C1112 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -53,6 +52,7 @@
 		FCB133471E437457001C1112 /* StarFull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarFull@2x.png"; sourceTree = "<group>"; };
 		FCB1334B1E437457001C1112 /* CSwiftV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSwiftV.swift; sourceTree = "<group>"; };
 		FCB1334D1E437457001C1112 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
+		FCB133611E437529001C1112 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../AppCollectionAssets/Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +97,7 @@
 		FC7691721E2CD90A00DB6F38 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FC7691711E2CD90A00DB6F38 /* App Collection.app */,
+				FC7691711E2CD90A00DB6F38 /* AppCollection.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,8 +105,8 @@
 		FCB133311E437457001C1112 /* AppCollection */ = {
 			isa = PBXGroup;
 			children = (
+				FCB133611E437529001C1112 /* Assets.xcassets */,
 				FCB133321E437457001C1112 /* AppsViewController.swift */,
-				FCB133331E437457001C1112 /* Assets.xcassets */,
 				FCB133341E437457001C1112 /* AppApp.storyboard */,
 				FCB133361E437457001C1112 /* Cells */,
 				FCB133391E437457001C1112 /* DetailViewController.swift */,
@@ -196,9 +196,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FC7691701E2CD90A00DB6F38 /* App Collection */ = {
+		FC7691701E2CD90A00DB6F38 /* AppCollection */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FC7691831E2CD90A00DB6F38 /* Build configuration list for PBXNativeTarget "App Collection" */;
+			buildConfigurationList = FC7691831E2CD90A00DB6F38 /* Build configuration list for PBXNativeTarget "AppCollection" */;
 			buildPhases = (
 				C78B6541D53D8D0ADF8122F6 /* [CP] Check Pods Manifest.lock */,
 				FC76916D1E2CD90A00DB6F38 /* Sources */,
@@ -212,9 +212,9 @@
 			);
 			dependencies = (
 			);
-			name = "App Collection";
+			name = AppCollection;
 			productName = AppusApplications;
-			productReference = FC7691711E2CD90A00DB6F38 /* App Collection.app */;
+			productReference = FC7691711E2CD90A00DB6F38 /* AppCollection.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -235,7 +235,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FC76916C1E2CD90A00DB6F38 /* Build configuration list for PBXProject "App Collection" */;
+			buildConfigurationList = FC76916C1E2CD90A00DB6F38 /* Build configuration list for PBXProject "AppCollection" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -248,7 +248,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FC7691701E2CD90A00DB6F38 /* App Collection */,
+				FC7691701E2CD90A00DB6F38 /* AppCollection */,
 			);
 		};
 /* End PBXProject section */
@@ -262,10 +262,10 @@
 				FCB1335C1E437457001C1112 /* languages_isoa2.csv in Resources */,
 				FCB1335D1E437457001C1112 /* StarEmpty@2x.png in Resources */,
 				FCB133501E437457001C1112 /* AppApp.storyboard in Resources */,
+				FCB133621E437529001C1112 /* Assets.xcassets in Resources */,
 				FCB1335B1E437457001C1112 /* IMG_7829.png in Resources */,
 				FCB1335E1E437457001C1112 /* StarFull@2x.png in Resources */,
 				FCB133581E437457001C1112 /* apps_ids.txt in Resources */,
-				FCB1334F1E437457001C1112 /* Assets.xcassets in Resources */,
 				FCB133561E437457001C1112 /* Info.plist in Resources */,
 				FCB133591E437457001C1112 /* IMG_7827.png in Resources */,
 			);
@@ -495,7 +495,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FC76916C1E2CD90A00DB6F38 /* Build configuration list for PBXProject "App Collection" */ = {
+		FC76916C1E2CD90A00DB6F38 /* Build configuration list for PBXProject "AppCollection" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC7691811E2CD90A00DB6F38 /* Debug */,
@@ -504,7 +504,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FC7691831E2CD90A00DB6F38 /* Build configuration list for PBXNativeTarget "App Collection" */ = {
+		FC7691831E2CD90A00DB6F38 /* Build configuration list for PBXNativeTarget "AppCollection" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC7691841E2CD90A00DB6F38 /* Debug */,
