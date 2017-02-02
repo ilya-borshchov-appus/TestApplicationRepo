@@ -63,6 +63,14 @@ open class AppsViewController: UIViewController {
         return appStoryboard.instantiateViewController(withIdentifier: CurrentViewControllerId) as! AppsViewController
     }
     
+    open static func sharedNavigationViewController () -> UINavigationController {
+        let bundlePath = Bundle(for: AppsViewController.self)
+        let pathResource = bundlePath.path(forResource: StoryboardName, ofType: "bundle")!
+        let podBundle = Bundle(path: pathResource)
+        let appStoryboard = UIStoryboard(name: StoryboardName, bundle: podBundle)
+        return appStoryboard.instantiateViewController(withIdentifier: NavigationViewControllerId) as! UINavigationController
+    }
+    
     fileprivate func setupTheme() {
         if let navigationController = self.navigationController {
             let navBar = navigationController.navigationBar
