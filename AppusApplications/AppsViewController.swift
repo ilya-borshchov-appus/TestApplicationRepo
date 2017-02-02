@@ -15,6 +15,7 @@ let CurrentViewControllerId = "AppsViewController"
 let CancelButtonTitle = "Cancel"
 let DetailSegue = "detailSegue"
 let AppCellId = "applicationCell"
+let NavigationViewControllerId = "NavigationViewControllerId"
 
 public enum DataSourceType {
     case array([String])
