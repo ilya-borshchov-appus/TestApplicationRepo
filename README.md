@@ -17,23 +17,28 @@ import iTunesApplications
 // Declare vc
 var iTunesApplications : AppsViewController?
 
-// Init
-self.iTunesApplications = AppsViewController.sharedAppsViewController()
-// Set list of application ids, also application details can be fetched from file with ids, from file with ids by url and by developer id
-self.iTunesApplications?.type = .array(["858525203","578979413","919087726","507125352","642665353",
+override func viewDidLoad() {
+    	super.viewDidLoad()
+	// Init
+	self.iTunesApplications = AppsViewController.sharedAppsViewController()
+	// Set list of application ids, also application details can be fetched from file with ids, from file with ids by url and by developer id
+	self.iTunesApplications?.type = .array(["858525203","578979413","919087726","507125352","642665353",
                                     "664457128","1023583941", "849600010","640097569","875063456"])
         
-// Set star image for rating
-SettingsManager.shared.filledRatingImage = UIImage(named: "StarEmpty")
-SettingsManager.shared.emptyRatingImage = UIImage(named: "StarFull")
+	// Set star image for rating
+	SettingsManager.shared.filledRatingImage = UIImage(named: "StarEmpty")
+	SettingsManager.shared.emptyRatingImage = UIImage(named: "StarFull")
 
-// Configure UI style        
-SettingsManager.shared.textColor = UIColor.green
-// hide cancel button if vc will be pushed
-SettingsManager.shared.cancelButtonHidden = true
+	// Configure UI style        
+	SettingsManager.shared.textColor = UIColor.green
+	// Hide cancel button if vc will be pushed
+	SettingsManager.shared.cancelButtonHidden = true
         
+}
 // Push vc
-self.navigationController?.pushViewController(self.iTunesApplications!, animated: true)
+@IBAction func showApplicationListClicked(_ sender: Any) {
+        self.navigationController?.pushViewController(self.iTunesApplications!, animated: true)
+}
 ```
 
 Developed By
