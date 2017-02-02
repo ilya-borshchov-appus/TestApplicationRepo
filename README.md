@@ -18,7 +18,8 @@ import iTunesApplications
 var iTunesApplications : AppsViewController?
 
 override func viewDidLoad() {
-    	super.viewDidLoad()
+    super.viewDidLoad()
+
 	// Init
 	self.iTunesApplications = AppsViewController.sharedAppsViewController()
 	// Set list of application ids, also application details can be fetched from file with ids, from file with ids by url and by developer id
@@ -33,8 +34,8 @@ override func viewDidLoad() {
 	SettingsManager.shared.textColor = UIColor.green
 	// Hide cancel button if vc will be pushed
 	SettingsManager.shared.cancelButtonHidden = true
-        
 }
+
 // Push vc
 @IBAction func showApplicationListClicked(_ sender: Any) {
         self.navigationController?.pushViewController(self.iTunesApplications!, animated: true)
