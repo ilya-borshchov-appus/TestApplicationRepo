@@ -10,6 +10,7 @@ import UIKit
 import AlamofireImage
 import Alamofire
 
+let BundleName = "AppCollection"
 let StoryboardName = "AppApp"
 let CurrentViewControllerId = "AppsViewController"
 let CancelButtonTitle = "Cancel"
@@ -58,7 +59,7 @@ open class AppsViewController: UIViewController {
     
     open static func sharedAppsViewController () -> AppsViewController {
         let bundlePath = Bundle(for: AppsViewController.self)
-        let pathResource = bundlePath.path(forResource: StoryboardName, ofType: "bundle")!
+        let pathResource = bundlePath.path(forResource: BundleName, ofType: "bundle")!
         let podBundle = Bundle(path: pathResource)
         let appStoryboard = UIStoryboard(name: StoryboardName, bundle: podBundle)
         return appStoryboard.instantiateViewController(withIdentifier: CurrentViewControllerId) as! AppsViewController
@@ -66,7 +67,7 @@ open class AppsViewController: UIViewController {
     
     open static func sharedNavigationViewController () -> UINavigationController {
         let bundlePath = Bundle(for: AppsViewController.self)
-        let pathResource = bundlePath.path(forResource: StoryboardName, ofType: "bundle")!
+        let pathResource = bundlePath.path(forResource: BundleName, ofType: "bundle")!
         let podBundle = Bundle(path: pathResource)
         let appStoryboard = UIStoryboard(name: StoryboardName, bundle: podBundle)
         return appStoryboard.instantiateViewController(withIdentifier: NavigationViewControllerId) as! UINavigationController
