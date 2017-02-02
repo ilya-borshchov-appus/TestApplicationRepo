@@ -134,7 +134,8 @@ class DetailViewController: UIViewController {
         self.compatibilityInfo.text = String(format: MinVersion, (self.selectedApp?.minVersion)!, compatible)
         self.ratingInfo.text = "Rated \((self.selectedApp?.contentAdvisoryRating)!)"
         
-        guard let path = Bundle.main.path(forResource: CsvLanguagesPath, ofType: "csv") else {
+        let bundlePath = Bundle(for: AppsViewController.self)
+        guard let path = bundlePath.path(forResource: CsvLanguagesPath, ofType: "csv") else {
             return
         }
         
