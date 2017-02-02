@@ -46,7 +46,7 @@ class ApplicationFactory: NSObject {
     }
     
     // http://uploadedit.com <- here you can upload file with .txt type and test this method
-    func getListOfApplicationsFromFileWith(_ url: String, completion: @escaping (_ list  : [AppusApp]?) -> Void) {
+    func getListOfApplicationsFromCloudWithFile(_ url: String, completion: @escaping (_ list  : [AppusApp]?) -> Void) {
         Alamofire.request(url)
             .validate(contentType: ["text/plain"])
             .response { response in
@@ -58,7 +58,7 @@ class ApplicationFactory: NSObject {
                         completion(nil)
                         return
                     }
-                    self.getListOfApplicationsFrom(string: String.init(data: data, encoding: .utf8), completion: completion)
+                    self.getListOfApplicationsFrom(String.init(data: data, encoding: .utf8), completion: completion)
                 }
         }
     }
@@ -103,7 +103,7 @@ class ApplicationFactory: NSObject {
             var dataSource = [AppusApp]()
             json.arrayValue.forEach({ (app) in
                 let appusApp = AppusApp()
-                appusApp.initWith(json: app)
+                appusApp.initWith(app)
                 dataSource.append(appusApp)
             })
             

@@ -8,29 +8,29 @@
 
 import UIKit
 
-class ColorManager: NSObject {
+open class ColorManager: NSObject {
     open static let shared = ColorManager()
     
     // MARK: UINavigationBar
-    var isTransparentNavigationBar = false
-    var navigationBarImage: UIImage?
-    var navigationBarColor: UIColor?
-    var navigationTitleColor = UIColor.black // default: black
-    var navigationItemColor: UIColor?
-    var cancelButtonImage: UIImage?
+    open var isTransparentNavigationBar = false
+    open var navigationBarImage: UIImage?
+    open var navigationBarColor: UIColor?
+    open var navigationTitleColor = UIColor.black // default: black
+    open var navigationItemColor: UIColor?
+    open var cancelButtonImage: UIImage?
     
     // MARK: Rating view
-    var filledRatingImage = UIImage(named: "StarEmpty")
-    var emptyRatingImage = UIImage(named: "StarFull")
+    open var filledRatingImage = UIImage(named: "StarEmpty.png")
+    open var emptyRatingImage = UIImage(named: "StarFull.png")
     
     // MARK: Screens parameters
-    var sectionTitleColor = UIColor.black // default: black
-    var backgroundImage: UIImage?
-    var backgroundColor = UIColor.white
+    open var sectionTitleColor = UIColor.black // default: black
+    open var backgroundImage: UIImage?
+    open var backgroundColor = UIColor.white
     
     // MARK: Details Screen parameter
-    var textColor = UIColor.darkGray // default: darkGrey
-    var infoTextColor = UIColor.black // default: black
-    var separatorColor: UIColor?
-    var purchaseButtonColor: UIColor?
+    open var textColor = UIColor.darkGray // default: darkGrey
+    open var infoTextColor = UIColor.black // default: black
+    open var separatorColor: UIColor?
+    open var purchaseButtonColor: UIColor?
 }

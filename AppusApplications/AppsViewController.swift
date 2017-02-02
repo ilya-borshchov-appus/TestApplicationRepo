@@ -65,10 +65,14 @@ open class AppsViewController: UIViewController {
     
 
 
-    /*open static func sharedAppsViewController () -> AppsViewController {
-        let appStoryboard = UIStoryboard(name: "AppApp", bundle: Bundle.main)
+    open static func sharedAppsViewController () -> AppsViewController {
+        let bundlePath = Bundle(for: AppsViewController.self)
+        let pathResource = bundlePath.path(forResource: "AppApp", ofType: "bundle")!
+        let podBundle = Bundle(path: pathResource)
+        
+        let appStoryboard = UIStoryboard(name: "AppApp", bundle: podBundle)
         return appStoryboard.instantiateViewController(withIdentifier: "AppsViewController") as! AppsViewController
-    }*/
+    }
     
 
     fileprivate func setupTheme() {
@@ -108,9 +112,9 @@ open class AppsViewController: UIViewController {
         case .array(let ids):
             ApplicationFactory.sharedFactory.getListOfApplications(by: ids, completion: self.completion)
         case .file(let name):
-            ApplicationFactory.sharedFactory.getListOfApplicationsFromFileWith(name: name, completion: self.completion)
+            ApplicationFactory.sharedFactory.getListOfApplicationsFromFileWith(name, completion: self.completion)
         case .url(let url):
-            ApplicationFactory.sharedFactory.getListOfApplicationsFromFileWith(url: url, completion: self.completion)
+            ApplicationFactory.sharedFactory.getListOfApplicationsFromCloudWithFile(url, completion: self.completion)
         case .developer(let id):
             ApplicationFactory.sharedFactory.getListOfApplicationsForDeveloper(with: id, completion: self.completion)
         }
@@ -122,7 +126,10 @@ open class AppsViewController: UIViewController {
         }
         
         self.dataSource = dataSource
-        self.tableView.reloadData()
+        if (self.tableView != nil){
+            self.tableView.reloadData()
+        }
+        
         
         print("Data source \(dataSource)")
     }
