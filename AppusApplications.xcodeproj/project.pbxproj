@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1837587529BC3F6BD348E88F /* Pods_AppusApplications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F160896A61387DEB112CC3 /* Pods_AppusApplications.framework */; };
 		A6BBC8121E2F737B005D1D68 /* apps_ids.txt in Resources */ = {isa = PBXBuildFile; fileRef = A6BBC8111E2F737A005D1D68 /* apps_ids.txt */; };
-		A6CD174C1E40B31900CED95C /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD174B1E40B31900CED95C /* ColorManager.swift */; };
+		A6CD174C1E40B31900CED95C /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD174B1E40B31900CED95C /* SettingsManager.swift */; };
 		A6FCF7AC1E2E844200EAC0A4 /* ApplicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FCF7A71E2E844200EAC0A4 /* ApplicationTableViewCell.swift */; };
 		A6FCF7AD1E2E844200EAC0A4 /* ApplicationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FCF7A91E2E844200EAC0A4 /* ApplicationFactory.swift */; };
 		A6FCF7AE1E2E844200EAC0A4 /* AppusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FCF7AB1E2E844200EAC0A4 /* AppusApp.swift */; };
@@ -30,7 +30,7 @@
 		49F495E235BE65000F994A82 /* Pods-AppusApplications.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppusApplications.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppusApplications/Pods-AppusApplications.release.xcconfig"; sourceTree = "<group>"; };
 		83F160896A61387DEB112CC3 /* Pods_AppusApplications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppusApplications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6BBC8111E2F737A005D1D68 /* apps_ids.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = apps_ids.txt; sourceTree = "<group>"; };
-		A6CD174B1E40B31900CED95C /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		A6CD174B1E40B31900CED95C /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		A6FCF7A71E2E844200EAC0A4 /* ApplicationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationTableViewCell.swift; sourceTree = "<group>"; };
 		A6FCF7A91E2E844200EAC0A4 /* ApplicationFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationFactory.swift; sourceTree = "<group>"; };
 		A6FCF7AB1E2E844200EAC0A4 /* AppusApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppusApp.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				A6FCF7A91E2E844200EAC0A4 /* ApplicationFactory.swift */,
-				A6CD174B1E40B31900CED95C /* ColorManager.swift */,
+				A6CD174B1E40B31900CED95C /* SettingsManager.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -342,7 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC7691771E2CD90A00DB6F38 /* AppsViewController.swift in Sources */,
-				A6CD174C1E40B31900CED95C /* ColorManager.swift in Sources */,
+				A6CD174C1E40B31900CED95C /* SettingsManager.swift in Sources */,
 				FC3B526F1E3626D0000449C7 /* DetailCollectionViewCell.swift in Sources */,
 				A6FCF7AC1E2E844200EAC0A4 /* ApplicationTableViewCell.swift in Sources */,
 				FC35F7531E32672B00FC1420 /* DetailViewController.swift in Sources */,

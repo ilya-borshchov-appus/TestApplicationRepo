@@ -10,6 +10,12 @@ import UIKit
 import AlamofireImage
 import Alamofire
 
+let StoryboardName = "AppApp"
+let CurrentViewControllerId = "AppsViewController"
+let CancelButtonTitle = "Cancel"
+let DetailSegue = "detailSegue"
+let CellId = "applicationCell"
+
 public enum DataSourceType {
     case array([String])
     case file(String)
@@ -28,53 +34,35 @@ open class AppsViewController: UIViewController {
     }
     
     fileprivate var dataSource : [AppusApp] = []
-    fileprivate let colorManager = ColorManager.shared
+    fileprivate let settingsManager = SettingsManager.shared
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.testColorScheme()
-        
         self.initDataSource()
         self.setupTheme()
         
-        if let image = self.colorManager.cancelButtonImage {
+        if let image = self.settingsManager.cancelButtonImage {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: image, style: .done, target: self, action: #selector(cancelTapped))
         } else {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Cancel", style: .done, target: self, action: #selector(cancelTapped))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: CancelButtonTitle, style: .done, target: self, action: #selector(cancelTapped))
+        }
+        
+        if (self.settingsManager.cancelButtonHidden == true){
+            self.navigationItem.rightBarButtonItem = nil
         }
         
         self.tableView.tableFooterView = UIView()
     }
     
-//    fileprivate func testColorScheme() {
-//        self.colorManager.isTransparentNavigationBar = true
-//        self.colorManager.navigationBarColor = UIColor.red
-//        self.colorManager.navigationTitleColor = UIColor.blue
-//        self.colorManager.navigationItemColor = UIColor.green
-//        
-//        self.colorManager.sectionTitleColor = UIColor.yellow
-//        self.colorManager.backgroundColor = UIColor.black
-//        self.colorManager.backgroundImage = UIImage(named: "background")
-//        
-//        self.colorManager.textColor = UIColor.orange
-//        self.colorManager.infoTextColor = UIColor.orange
-//        self.colorManager.separatorColor = UIColor.orange
-//        self.colorManager.purchaseButtonColor = UIColor.orange
-//    }
-    
-
-
     open static func sharedAppsViewController () -> AppsViewController {
         let bundlePath = Bundle(for: AppsViewController.self)
-        let pathResource = bundlePath.path(forResource: "AppApp", ofType: "bundle")!
+        let pathResource = bundlePath.path(forResource: StoryboardName, ofType: "bundle")!
         let podBundle = Bundle(path: pathResource)
-        
-        let appStoryboard = UIStoryboard(name: "AppApp", bundle: podBundle)
-        return appStoryboard.instantiateViewController(withIdentifier: "AppsViewController") as! AppsViewController
+        let appStoryboard = UIStoryboard(name: StoryboardName, bundle: podBundle)
+        return appStoryboard.instantiateViewController(withIdentifier: CurrentViewControllerId) as! AppsViewController
     }
     
-
     fileprivate func setupTheme() {
         if let navigationController = self.navigationController {
             let navBar = navigationController.navigationBar
@@ -98,7 +86,6 @@ open class AppsViewController: UIViewController {
         self.tableView.backgroundColor = UIColor.clear
         self.backgroundView.image = self.colorManager.backgroundImage
         self.view.backgroundColor = self.colorManager.backgroundColor
-        
         self.tableView.separatorColor = self.colorManager.separatorColor
     }
     
@@ -129,14 +116,11 @@ open class AppsViewController: UIViewController {
         if (self.tableView != nil){
             self.tableView.reloadData()
         }
-        
-        
-        print("Data source \(dataSource)")
     }
     
     // MARK: Segue    
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "detailSegue"){
+        if (segue.identifier == DetailSegue){
             let destination = segue.destination as! DetailViewController
             destination.selectedApp = self.dataSource[((sender as! IndexPath).row)]
         }
@@ -144,7 +128,7 @@ open class AppsViewController: UIViewController {
     
     // MARK: Actions
     func cancelTapped(_ sender: UIBarButtonItem) {
-        
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -154,23 +138,19 @@ extension AppsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cellId = "applicationCell"
+        let cellId = CellId
         let appusApp = self.dataSource[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! ApplicationTableViewCell
-        
         cell.appLabel?.text = appusApp.appName
-        
         cell.ratingView.emptyImage = self.colorManager.emptyRatingImage
         cell.ratingView.fullImage = self.colorManager.filledRatingImage
-        
         cell.ratingView.contentMode = UIViewContentMode.scaleAspectFit
-        
         cell.ratingView.rating = Float((appusApp.averageRating)) ?? 0
         cell.ratingView.isHidden = cell.ratingView.rating == 0
-        
         cell.ratingView.editable = false
         cell.ratingView.floatRatings = true
         cell.countRating.text = String(format: "(%@)", appusApp.userRatingCount)
+        
         Alamofire.request(appusApp.appImagePath).responseImage { response in
             debugPrint(response)
             debugPrint(response.result)
@@ -186,7 +166,7 @@ extension AppsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        self.performSegue(withIdentifier: "detailSegue", sender: indexPath)
+        self.performSegue(withIdentifier: DetailSegue, sender: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

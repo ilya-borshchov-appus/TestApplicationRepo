@@ -8,10 +8,11 @@
 
 import UIKit
 
-open class ColorManager: NSObject {
-    open static let shared = ColorManager()
+open class SettingsManager: NSObject {
+    open static let shared = SettingsManager()
     
     // MARK: UINavigationBar
+    open var cancelButtonHidden = false
     open var isTransparentNavigationBar = false
     open var navigationBarImage: UIImage?
     open var navigationBarColor: UIColor?
