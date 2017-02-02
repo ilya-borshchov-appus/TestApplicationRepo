@@ -14,7 +14,7 @@ let StoryboardName = "AppApp"
 let CurrentViewControllerId = "AppsViewController"
 let CancelButtonTitle = "Cancel"
 let DetailSegue = "detailSegue"
-let CellId = "applicationCell"
+let AppCellId = "applicationCell"
 
 public enum DataSourceType {
     case array([String])
@@ -138,9 +138,8 @@ extension AppsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cellId = CellId
         let appusApp = self.dataSource[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! ApplicationTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: AppCellId) as! ApplicationTableViewCell
         cell.appLabel?.text = appusApp.appName
         cell.ratingView.emptyImage = self.settingsManager.emptyRatingImage
         cell.ratingView.fullImage = self.settingsManager.filledRatingImage

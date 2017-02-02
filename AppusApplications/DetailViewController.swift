@@ -190,8 +190,7 @@ extension DetailViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath : IndexPath) -> UICollectionViewCell {
         
-        let reuseIdentifier = CellId
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId,
                                                       for: indexPath) as! DetailCollectionViewCell
       
         Alamofire.request((self.selectedApp!.screenshots[indexPath.row])).responseImage { response in            
