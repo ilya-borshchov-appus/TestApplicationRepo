@@ -1,5 +1,5 @@
 //
-//  ColorManager.swift
+//  SettingsManager.swift
 //  AppusApplications
 //
 //  Created by Vladimir Grigoriev on 1/31/17.

@@ -18,7 +18,7 @@ class ApplicationTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        appLabel.textColor = ColorManager.shared.sectionTitleColor
+        appLabel.textColor = SettingsManager.shared.sectionTitleColor
     }
     
 }

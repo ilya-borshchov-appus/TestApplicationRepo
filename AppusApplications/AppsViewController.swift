@@ -67,26 +67,26 @@ open class AppsViewController: UIViewController {
         if let navigationController = self.navigationController {
             let navBar = navigationController.navigationBar
             
-            if self.colorManager.isTransparentNavigationBar {
+            if self.settingsManager.isTransparentNavigationBar {
                 navBar.setBackgroundImage(UIImage(), for: .default)
                 navBar.shadowImage = UIImage()
                 navBar.isTranslucent = true
             } else {
-                navBar.setBackgroundImage(self.colorManager.navigationBarImage, for: .default)
-                navBar.barTintColor = self.colorManager.navigationBarColor
+                navBar.setBackgroundImage(self.settingsManager.navigationBarImage, for: .default)
+                navBar.barTintColor = self.settingsManager.navigationBarColor
             }
       
-            navBar.titleTextAttributes = [NSForegroundColorAttributeName: self.colorManager.navigationTitleColor]
+            navBar.titleTextAttributes = [NSForegroundColorAttributeName: self.settingsManager.navigationTitleColor]
             
-            if let itemsColor = self.colorManager.navigationItemColor {
+            if let itemsColor = self.settingsManager.navigationItemColor {
                 navBar.tintColor = itemsColor
             }
         }
         
         self.tableView.backgroundColor = UIColor.clear
-        self.backgroundView.image = self.colorManager.backgroundImage
-        self.view.backgroundColor = self.colorManager.backgroundColor
-        self.tableView.separatorColor = self.colorManager.separatorColor
+        self.backgroundView.image = self.settingsManager.backgroundImage
+        self.view.backgroundColor = self.settingsManager.backgroundColor
+        self.tableView.separatorColor = self.settingsManager.separatorColor
     }
     
     // MARK: Data Source initialisation
@@ -142,8 +142,8 @@ extension AppsViewController: UITableViewDataSource, UITableViewDelegate {
         let appusApp = self.dataSource[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! ApplicationTableViewCell
         cell.appLabel?.text = appusApp.appName
-        cell.ratingView.emptyImage = self.colorManager.emptyRatingImage
-        cell.ratingView.fullImage = self.colorManager.filledRatingImage
+        cell.ratingView.emptyImage = self.settingsManager.emptyRatingImage
+        cell.ratingView.fullImage = self.settingsManager.filledRatingImage
         cell.ratingView.contentMode = UIViewContentMode.scaleAspectFit
         cell.ratingView.rating = Float((appusApp.averageRating)) ?? 0
         cell.ratingView.isHidden = cell.ratingView.rating == 0

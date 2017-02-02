@@ -40,7 +40,7 @@ class DetailViewController: UIViewController {
     @IBOutlet var textLabels: [UILabel]!
     @IBOutlet var infoTextLabels: [UILabel]!
     
-    fileprivate let colorManager = ColorManager.shared
+    fileprivate let settingsManager = SettingsManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,15 +53,15 @@ class DetailViewController: UIViewController {
     fileprivate func setupTheme() {
     
         self.containerView.backgroundColor = UIColor.clear
-        self.backgroundView.image = self.colorManager.backgroundImage
-        self.view.backgroundColor = self.colorManager.backgroundColor
-        self.iTunesButton.setTitleColor(self.colorManager.purchaseButtonColor, for: .normal)
-        self.setColor(self.colorManager.sectionTitleColor, for: self.sectionTitles)
-        self.setColor(self.colorManager.textColor, for: self.textLabels)
-        self.setColor(self.colorManager.infoTextColor, for: self.infoTextLabels)
+        self.backgroundView.image = self.settingsManager.backgroundImage
+        self.view.backgroundColor = self.settingsManager.backgroundColor
+        self.iTunesButton.setTitleColor(self.settingsManager.purchaseButtonColor, for: .normal)
+        self.setColor(self.settingsManager.sectionTitleColor, for: self.sectionTitles)
+        self.setColor(self.settingsManager.textColor, for: self.textLabels)
+        self.setColor(self.settingsManager.infoTextColor, for: self.infoTextLabels)
         
         for separator in separators {
-            separator.backgroundColor = self.colorManager.separatorColor ?? UIColor.lightGray
+            separator.backgroundColor = self.settingsManager.separatorColor ?? UIColor.lightGray
         }
     }
     
@@ -85,8 +85,8 @@ class DetailViewController: UIViewController {
             }
         }
         
-        self.appRating.emptyImage = self.colorManager.emptyRatingImage
-        self.appRating.fullImage = self.colorManager.filledRatingImage
+        self.appRating.emptyImage = self.settingsManager.emptyRatingImage
+        self.appRating.fullImage = self.settingsManager.filledRatingImage
         self.appRating.contentMode = UIViewContentMode.scaleAspectFit
         self.appRating.rating = Float((self.selectedApp?.averageRating)!) ?? 0
         self.appRating.isHidden = self.appRating.rating == 0
