@@ -3,7 +3,11 @@ iTunes Applications
 
 Made by [![Appus Studio](https://github.com/appus-studio/Appus-Splash/blob/master/image/logo.png)](http://appus.pro)
 
-'iTunes Applications' show list of application from iTunes with details.
+'iTunes Applications' show list of applications from iTunes with details.
+
+![iTunes Applications: Show list of applications from iTunes with details](https://github.com/ilya-borshchov-appus/TestApplicationRepo/blob/master/AppusApplications/Resources/IMG_7827.PNG)
+![iTunes Applications: Show list of applications from iTunes with details](https://github.com/ilya-borshchov-appus/TestApplicationRepo/blob/master/AppusApplications/Resources/IMG_7828.PNG)
+![iTunes Applications: Show list of applications from iTunes with details](https://github.com/ilya-borshchov-appus/TestApplicationRepo/blob/master/AppusApplications/Resources/IMG_7829.PNG)
 
 #Setup
 ```Ruby
