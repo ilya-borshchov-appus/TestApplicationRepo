@@ -1,18 +1,35 @@
-AppApp
+iTunes Applications
 =====================
 
 Made by [![Appus Studio](https://github.com/appus-studio/Appus-Splash/blob/master/image/logo.png)](http://appus.pro)
 
-'AppApp' very simple page control with custom styles.
-
-* [Example configuring](#example-configuring)
-
-##Example configuring
-![](Resourse/config_example.gif)
+‘iTunes Applications’ show list of application from iTunes with details.
 
 #Setup
 ```Ruby
-pod 'AppApp'
+pod ‘iTunesApplications’
+```
+
+```swift
+// declare vc
+    var iTunesApplications : AppsViewController?
+
+
+// init
+    self.iTunesApplications = AppsViewController.sharedAppsViewController()
+// set list of application ids, also application details can be fetched from file with ids, from file with ids by url and by developer id
+    self.iTunesApplications?.type = .array(["858525203","578979413","919087726","507125352","642665353",
+                                    "664457128","1023583941", "849600010","640097569","875063456"])
+        
+// Set star image for rating
+    SettingsManager.shared.filledRatingImage = UIImage(named: "StarEmpty")
+    SettingsManager.shared.emptyRatingImage = UIImage(named: "StarFull")
+        
+// hide cancel button if vc will be pushed
+    SettingsManager.shared.cancelButtonHidden = true
+        
+// push vc
+    self.navigationController?.pushViewController(self.iTunesApplications!, animated: true)
 ```
 
 Developed By
