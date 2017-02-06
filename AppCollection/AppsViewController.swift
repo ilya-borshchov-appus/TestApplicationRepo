@@ -142,7 +142,7 @@ public class AppsViewController: UIViewController {
         case .array(let ids):
             ApplicationFactory.sharedFactory.getListOfApplications(by: ids, completion: self.completion)
         case .file(let name):
-            ApplicationFactory.sharedFactory.getListOfApplicationsFromFileWith(name, completion: self.completion)
+            ApplicationFactory.sharedFactory.getListOfApplicationsFromFileWith(name: name, completion: self.completion)
         case .url(let url):
             ApplicationFactory.sharedFactory.getListOfApplicationsFromCloudWithFile(url, completion: self.completion)
         case .developer(let id):

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1837587529BC3F6BD348E88F /* Pods_AppusApplications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F160896A61387DEB112CC3 /* Pods_AppusApplications.framework */; };
 		AE8DC711965FBCBF2EAA2211 /* Pods_AppCollection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68882119FDD2EDDB442302F6 /* Pods_AppCollection.framework */; };
 		FCB1334E1E437457001C1112 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB133321E437457001C1112 /* AppsViewController.swift */; };
 		FCB133501E437457001C1112 /* AppApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCB133341E437457001C1112 /* AppApp.storyboard */; };
@@ -27,15 +26,14 @@
 		FCB1335E1E437457001C1112 /* StarFull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCB133471E437457001C1112 /* StarFull@2x.png */; };
 		FCB1335F1E437457001C1112 /* CSwiftV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1334B1E437457001C1112 /* CSwiftV.swift */; };
 		FCB133601E437457001C1112 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1334D1E437457001C1112 /* FloatRatingView.swift */; };
-		FCB133621E437529001C1112 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCB133611E437529001C1112 /* Assets.xcassets */; };
+		FCBB84BD1E48EDFD0006C6CF /* Localisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBB84BC1E48EDFD0006C6CF /* Localisation.swift */; };
+		FCBB84BF1E48EF720006C6CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBB84BE1E48EF720006C6CF /* AppDelegate.swift */; };
+		FCBB84C11E48F00C0006C6CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCBB84C01E48F00C0006C6CF /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3EB5F164A40F1D0C271BAC64 /* Pods-AppusApplications.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppusApplications.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppusApplications/Pods-AppusApplications.debug.xcconfig"; sourceTree = "<group>"; };
-		49F495E235BE65000F994A82 /* Pods-AppusApplications.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppusApplications.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppusApplications/Pods-AppusApplications.release.xcconfig"; sourceTree = "<group>"; };
 		4CDB24E44CE022F624F90F69 /* Pods-AppCollection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppCollection.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppCollection/Pods-AppCollection.release.xcconfig"; sourceTree = "<group>"; };
 		68882119FDD2EDDB442302F6 /* Pods_AppCollection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppCollection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		83F160896A61387DEB112CC3 /* Pods_AppusApplications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppusApplications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAA1BC2C3C4B3D431515E5F6 /* Pods-AppCollection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppCollection.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppCollection/Pods-AppCollection.debug.xcconfig"; sourceTree = "<group>"; };
 		FC7691711E2CD90A00DB6F38 /* AppCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCB133321E437457001C1112 /* AppsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +54,9 @@
 		FCB133471E437457001C1112 /* StarFull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarFull@2x.png"; sourceTree = "<group>"; };
 		FCB1334B1E437457001C1112 /* CSwiftV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSwiftV.swift; sourceTree = "<group>"; };
 		FCB1334D1E437457001C1112 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
-		FCB133611E437529001C1112 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../AppCollectionAssets/Assets.xcassets; sourceTree = "<group>"; };
+		FCBB84BC1E48EDFD0006C6CF /* Localisation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localisation.swift; sourceTree = "<group>"; };
+		FCBB84BE1E48EF720006C6CF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FCBB84C01E48F00C0006C6CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1837587529BC3F6BD348E88F /* Pods_AppusApplications.framework in Frameworks */,
 				AE8DC711965FBCBF2EAA2211 /* Pods_AppCollection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,8 +74,6 @@
 		1D269B97A67648A83B685879 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3EB5F164A40F1D0C271BAC64 /* Pods-AppusApplications.debug.xcconfig */,
-				49F495E235BE65000F994A82 /* Pods-AppusApplications.release.xcconfig */,
 				DAA1BC2C3C4B3D431515E5F6 /* Pods-AppCollection.debug.xcconfig */,
 				4CDB24E44CE022F624F90F69 /* Pods-AppCollection.release.xcconfig */,
 			);
@@ -86,7 +83,6 @@
 		D406A3DEA29348F0B3B86665 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				83F160896A61387DEB112CC3 /* Pods_AppusApplications.framework */,
 				68882119FDD2EDDB442302F6 /* Pods_AppCollection.framework */,
 			);
 			name = Frameworks;
@@ -113,7 +109,8 @@
 		FCB133311E437457001C1112 /* AppCollection */ = {
 			isa = PBXGroup;
 			children = (
-				FCB133611E437529001C1112 /* Assets.xcassets */,
+				FCBB84C01E48F00C0006C6CF /* Assets.xcassets */,
+				FCBB84BE1E48EF720006C6CF /* AppDelegate.swift */,
 				FCB133321E437457001C1112 /* AppsViewController.swift */,
 				FCB133341E437457001C1112 /* AppApp.storyboard */,
 				FCB133361E437457001C1112 /* Cells */,
@@ -149,6 +146,7 @@
 		FCB1333E1E437457001C1112 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FCBB84BC1E48EDFD0006C6CF /* Localisation.swift */,
 				FCB1333F1E437457001C1112 /* AppusApp.swift */,
 			);
 			path = Model;
@@ -270,7 +268,7 @@
 				FCB1335C1E437457001C1112 /* languages_isoa2.csv in Resources */,
 				FCB1335D1E437457001C1112 /* StarEmpty@2x.png in Resources */,
 				FCB133501E437457001C1112 /* AppApp.storyboard in Resources */,
-				FCB133621E437529001C1112 /* Assets.xcassets in Resources */,
+				FCBB84C11E48F00C0006C6CF /* Assets.xcassets in Resources */,
 				FCB1335B1E437457001C1112 /* IMG_7829.png in Resources */,
 				FCB1335E1E437457001C1112 /* StarFull@2x.png in Resources */,
 				FCB133581E437457001C1112 /* apps_ids.txt in Resources */,
@@ -347,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCBB84BF1E48EF720006C6CF /* AppDelegate.swift in Sources */,
 				FCB133511E437457001C1112 /* ApplicationTableViewCell.swift in Sources */,
 				FCB1334E1E437457001C1112 /* AppsViewController.swift in Sources */,
 				FCB133571E437457001C1112 /* AppusApp.swift in Sources */,
@@ -354,6 +353,7 @@
 				FCB133521E437457001C1112 /* DetailCollectionViewCell.swift in Sources */,
 				FCB133531E437457001C1112 /* DetailViewController.swift in Sources */,
 				FCB133601E437457001C1112 /* FloatRatingView.swift in Sources */,
+				FCBB84BD1E48EDFD0006C6CF /* Localisation.swift in Sources */,
 				FCB1335F1E437457001C1112 /* CSwiftV.swift in Sources */,
 				FCB133541E437457001C1112 /* ApplicationFactory.swift in Sources */,
 			);
