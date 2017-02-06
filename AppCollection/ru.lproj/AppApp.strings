@@ -1,0 +1,66 @@
+
+/* Class = "UILabel"; text = "Cat info"; ObjectID = "0U2-3e-onO"; */
+"0U2-3e-onO.text" = "Cat info";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "1SW-mY-Viy"; */
+"1SW-mY-Viy.text" = "Description";
+
+/* Class = "UINavigationItem"; title = "Application details"; ObjectID = "1U7-9A-GTu"; */
+"1U7-9A-GTu.title" = "Application details";
+
+/* Class = "UILabel"; text = "Rating"; ObjectID = "6Ec-5G-v15"; */
+"6Ec-5G-v15.text" = "Rating";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "6IG-FU-3dW"; */
+"6IG-FU-3dW.text" = "Category";
+
+/* Class = "UILabel"; text = "Languages"; ObjectID = "6hJ-cG-NO9"; */
+"6hJ-cG-NO9.text" = "Languages";
+
+/* Class = "UILabel"; text = "Updated at"; ObjectID = "B8d-DL-gZP"; */
+"B8d-DL-gZP.text" = "Updated at";
+
+/* Class = "UILabel"; text = "iPhone"; ObjectID = "EGW-I8-LSt"; */
+"EGW-I8-LSt.text" = "iPhone";
+
+/* Class = "UILabel"; text = "Information"; ObjectID = "FCZ-1J-Jbh"; */
+"FCZ-1J-Jbh.text" = "Information";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "KSy-Eb-cVI"; */
+"KSy-Eb-cVI.text" = "Label";
+
+/* Class = "UILabel"; text = "Compatibility info"; ObjectID = "Myl-s4-mJ3"; */
+"Myl-s4-mJ3.text" = "Compatibility info";
+
+/* Class = "UILabel"; text = " ajksh dahsd jkahsd ksahdkj ahs dklj haksjdh iuqy eiyaisdhkjlashd oi12h3kjhaksd kjad kashdk ahksd haksjd akdh kashdl kahsdlk hkjl12h3 kjh kjashd 12 e adsd "; ObjectID = "NEy-L9-NeH"; */
+"NEy-L9-NeH.text" = " ajksh dahsd jkahsd ksahdkj ahs dklj haksjdh iuqy eiyaisdhkjlashd oi12h3kjhaksd kjad kashdk ahksd haksjd akdh kashdl kahsdlk hkjl12h3 kjh kjashd 12 e adsd ";
+
+/* Class = "UINavigationItem"; title = "Applications"; ObjectID = "UP2-Gl-iSE"; */
+"UP2-Gl-iSE.title" = "Applications";
+
+/* Class = "UILabel"; text = "Dev info"; ObjectID = "UfU-IY-2Q5"; */
+"UfU-IY-2Q5.text" = "Dev info";
+
+/* Class = "UILabel"; text = "(1000)"; ObjectID = "Ved-sk-pOV"; */
+"Ved-sk-pOV.text" = "(1000)";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "cFY-J8-jWh"; */
+"cFY-J8-jWh.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Developer"; ObjectID = "isY-Ky-H2i"; */
+"isY-Ky-H2i.text" = "Developer";
+
+/* Class = "UILabel"; text = "Updated"; ObjectID = "kOA-X6-6io"; */
+"kOA-X6-6io.text" = "Updated";
+
+/* Class = "UILabel"; text = "Compatibility"; ObjectID = "nAG-On-QrS"; */
+"nAG-On-QrS.text" = "Compatibility";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "sNJ-TH-T7P"; */
+"sNJ-TH-T7P.text" = "Label";
+
+/* Class = "UILabel"; text = "Rating info"; ObjectID = "uTO-Am-9yB"; */
+"uTO-Am-9yB.text" = "Rating info";
+
+/* Class = "UILabel"; text = "languages info"; ObjectID = "vsS-gD-caQ"; */
+"vsS-gD-caQ.text" = "languages info";

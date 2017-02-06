@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1837587529BC3F6BD348E88F /* Pods_AppusApplications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F160896A61387DEB112CC3 /* Pods_AppusApplications.framework */; };
+		AE8DC711965FBCBF2EAA2211 /* Pods_AppCollection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68882119FDD2EDDB442302F6 /* Pods_AppCollection.framework */; };
 		FCB1334E1E437457001C1112 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB133321E437457001C1112 /* AppsViewController.swift */; };
 		FCB133501E437457001C1112 /* AppApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCB133341E437457001C1112 /* AppApp.storyboard */; };
 		FCB133511E437457001C1112 /* ApplicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB133371E437457001C1112 /* ApplicationTableViewCell.swift */; };
@@ -32,7 +33,10 @@
 /* Begin PBXFileReference section */
 		3EB5F164A40F1D0C271BAC64 /* Pods-AppusApplications.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppusApplications.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppusApplications/Pods-AppusApplications.debug.xcconfig"; sourceTree = "<group>"; };
 		49F495E235BE65000F994A82 /* Pods-AppusApplications.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppusApplications.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppusApplications/Pods-AppusApplications.release.xcconfig"; sourceTree = "<group>"; };
+		4CDB24E44CE022F624F90F69 /* Pods-AppCollection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppCollection.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppCollection/Pods-AppCollection.release.xcconfig"; sourceTree = "<group>"; };
+		68882119FDD2EDDB442302F6 /* Pods_AppCollection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppCollection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F160896A61387DEB112CC3 /* Pods_AppusApplications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppusApplications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAA1BC2C3C4B3D431515E5F6 /* Pods-AppCollection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppCollection.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppCollection/Pods-AppCollection.debug.xcconfig"; sourceTree = "<group>"; };
 		FC7691711E2CD90A00DB6F38 /* AppCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCB133321E437457001C1112 /* AppsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		FCB133351E437457001C1112 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AppApp.storyboard; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1837587529BC3F6BD348E88F /* Pods_AppusApplications.framework in Frameworks */,
+				AE8DC711965FBCBF2EAA2211 /* Pods_AppCollection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +77,8 @@
 			children = (
 				3EB5F164A40F1D0C271BAC64 /* Pods-AppusApplications.debug.xcconfig */,
 				49F495E235BE65000F994A82 /* Pods-AppusApplications.release.xcconfig */,
+				DAA1BC2C3C4B3D431515E5F6 /* Pods-AppCollection.debug.xcconfig */,
+				4CDB24E44CE022F624F90F69 /* Pods-AppCollection.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -80,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				83F160896A61387DEB112CC3 /* Pods_AppusApplications.framework */,
+				68882119FDD2EDDB442302F6 /* Pods_AppCollection.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -286,7 +294,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppusApplications/Pods-AppusApplications-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppCollection/Pods-AppCollection-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B2866DDE63620FDD10516ED1 /* [CP] Embed Pods Frameworks */ = {
@@ -301,7 +309,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppusApplications/Pods-AppusApplications-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppCollection/Pods-AppCollection-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C78B6541D53D8D0ADF8122F6 /* [CP] Check Pods Manifest.lock */ = {
@@ -460,12 +468,12 @@
 		};
 		FC7691841E2CD90A00DB6F38 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EB5F164A40F1D0C271BAC64 /* Pods-AppusApplications.debug.xcconfig */;
+			baseConfigurationReference = DAA1BC2C3C4B3D431515E5F6 /* Pods-AppCollection.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eugene Zadorozhniy (9WEU3XNBXT)";
 				DEVELOPMENT_TEAM = 6H32342R79;
-				INFOPLIST_FILE = AppusApplications/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/../../../Feather52/Desktop/TestRep/AppCollection/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Appus.AppusApplications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -477,12 +485,12 @@
 		};
 		FC7691851E2CD90A00DB6F38 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49F495E235BE65000F994A82 /* Pods-AppusApplications.release.xcconfig */;
+			baseConfigurationReference = 4CDB24E44CE022F624F90F69 /* Pods-AppCollection.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eugene Zadorozhniy (9WEU3XNBXT)";
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = AppusApplications/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/../../../Feather52/Desktop/TestRep/AppCollection/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Appus.AppusApplications;
 				PRODUCT_NAME = "$(TARGET_NAME)";

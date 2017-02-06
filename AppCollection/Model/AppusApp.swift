@@ -11,38 +11,40 @@ import SwiftyJSON
 
 class AppusApp: NSObject {
     // Image
-    fileprivate(set) var appImagePath = ""
-    fileprivate(set) var screenshots : [String] = []
+    private(set) var appImagePath = ""
+    private(set) var appImagePathForCell = ""
+    private(set) var screenshots : [String] = []
+    private(set) var isIPadScreenshots = false
     
     // Name
-    fileprivate(set) var appName = ""
-    fileprivate(set) var appCensoredName = ""
-    fileprivate(set) var companyName = ""
-    fileprivate(set) var sellerName = ""
+    private(set) var appName = ""
+    private(set) var appCensoredName = ""
+    private(set) var companyName = ""
+    private(set) var sellerName = ""
     
     // Details
-    fileprivate(set) var appDescription = ""
-    fileprivate(set) var genres : [String] = []
-    fileprivate(set) var primaryGenre = ""
-    fileprivate(set) var url = ""
-    fileprivate(set) var price = ""
-    fileprivate(set) var currency = ""
-    fileprivate(set) var languageCodes : [String] = []
-    fileprivate(set) var versionNumber = ""
-    fileprivate(set) var minVersion = ""
-    fileprivate(set) var suportedDevices : [String] = []
+    private(set) var appDescription = ""
+    private(set) var genres : [String] = []
+    private(set) var primaryGenre = ""
+    private(set) var url = ""
+    private(set) var price = ""
+    private(set) var currency = ""
+    private(set) var languageCodes : [String] = []
+    private(set) var versionNumber = ""
+    private(set) var minVersion = ""
+    private(set) var suportedDevices : [String] = []
     
     // Date
-    fileprivate(set) var date = ""
-    fileprivate(set) var currentVersionDate = ""
+    private(set) var date = ""
+    private(set) var currentVersionDate = ""
     
     // Rating
-    fileprivate(set) var currentRating = ""
-    fileprivate(set) var currrentAverageRating = ""
-    fileprivate(set) var averageRating = ""
-    fileprivate(set) var contentRating = ""
-    fileprivate(set) var contentAdvisoryRating = ""
-    fileprivate(set) var userRatingCount = ""
+    private(set) var currentRating = ""
+    private(set) var currrentAverageRating = ""
+    private(set) var averageRating = ""
+    private(set) var contentRating = ""
+    private(set) var contentAdvisoryRating = ""
+    private(set) var userRatingCount = ""
     
     override var description : String {
         var text = "Name: \(self.appName)\n"
@@ -55,13 +57,30 @@ class AppusApp: NSObject {
         return text
     }
 
-    func initWith(_ json: JSON) {
+    func initWith(json: JSON) {
         print (json)
-        self.appImagePath = json["artworkUrl100"].stringValue
-        self.screenshots = json["screenshotUrls"].arrayValue.map({$0.stringValue})
+        let idiom = UIDevice.current.userInterfaceIdiom
         
-        if (self.screenshots.count == 0){
-            self.screenshots = json["ipadScreenshotUrls"].arrayValue.map({$0.stringValue})
+        self.appImagePathForCell = json["artworkUrl100"].stringValue
+        
+        if idiom == .pad {
+            self.appImagePath = json["artworkUrl512"].stringValue
+            
+            if json["ipadScreenshotUrls"].count > 0 {
+                self.screenshots = json["ipadScreenshotUrls"].arrayValue.map({$0.stringValue})
+                self.isIPadScreenshots = true
+            } else {
+                self.screenshots = json["screenshotUrls"].arrayValue.map({$0.stringValue})
+            }
+        } else {
+            self.appImagePath = json["artworkUrl100"].stringValue
+            
+            if json["screenshotUrls"].count > 0 {
+                self.screenshots = json["screenshotUrls"].arrayValue.map({$0.stringValue})
+            } else {
+                self.screenshots = json["ipadScreenshotUrls"].arrayValue.map({$0.stringValue})
+                self.isIPadScreenshots = true
+            }
         }
         
         self.appName = json["trackName"].stringValue
@@ -71,7 +90,7 @@ class AppusApp: NSObject {
         
         self.appDescription = json["description"].stringValue
         self.genres = json["genres"].arrayValue.map({$0.stringValue})
-        self.primaryGenre = json["primaryGenreName"].stringValue
+        self.primaryGenre = json["genres"][0].stringValue
         self.url = json["trackViewUrl"].stringValue
         self.price = json["formattedPrice"].stringValue
         self.currency = json["currency"].stringValue

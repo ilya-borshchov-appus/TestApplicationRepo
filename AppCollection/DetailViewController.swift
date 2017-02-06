@@ -35,6 +35,18 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var ratingInfo: UILabel!
     @IBOutlet weak var compatibilityInfo: UILabel!
     @IBOutlet weak var languagesInfo: UILabel!
+    
+    // Static labels
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var developerLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var updatedLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var compatibilityLabel: UILabel!
+    @IBOutlet weak var languagesLabel: UILabel!
+    
+    // Collections of views
     @IBOutlet var separators: [UIView]!
     @IBOutlet var sectionTitles: [UILabel]!
     @IBOutlet var textLabels: [UILabel]!
@@ -47,15 +59,17 @@ class DetailViewController: UIViewController {
         
         self.setupTheme()
         self.initLayout()
+        self.setTitles()
     }
     
     // MARK: Init UI
-    fileprivate func setupTheme() {
-    
+    fileprivate func setupTheme() {        
         self.containerView.backgroundColor = UIColor.clear
         self.backgroundView.image = self.settingsManager.backgroundImage
         self.view.backgroundColor = self.settingsManager.backgroundColor
+        
         self.iTunesButton.setTitleColor(self.settingsManager.purchaseButtonColor, for: .normal)
+        
         self.setColor(self.settingsManager.sectionTitleColor, for: self.sectionTitles)
         self.setColor(self.settingsManager.textColor, for: self.textLabels)
         self.setColor(self.settingsManager.infoTextColor, for: self.infoTextLabels)
@@ -88,13 +102,15 @@ class DetailViewController: UIViewController {
         self.appRating.emptyImage = self.settingsManager.emptyRatingImage
         self.appRating.fullImage = self.settingsManager.filledRatingImage
         self.appRating.contentMode = UIViewContentMode.scaleAspectFit
+        
         self.appRating.rating = Float((self.selectedApp?.averageRating)!) ?? 0
         self.appRating.isHidden = self.appRating.rating == 0
+        
         self.appRating.editable = false
         self.appRating.floatRatings = true
         
         if (self.selectedApp?.price == "0"){
-            self.iTunesButton.setTitle("Free", for: .normal)
+            self.iTunesButton.setTitle(NSLocalizedString(Localisation.free, comment: ""), for: .normal)
         }else{
             self.iTunesButton.setTitle(self.selectedApp?.price, for: .normal)
         }
@@ -102,11 +118,13 @@ class DetailViewController: UIViewController {
         self.iTunesButton.layer.cornerRadius = 6.0
         self.iTunesButton.layer.borderColor = self.iTunesButton.currentTitleColor.cgColor
         self.iTunesButton.layer.borderWidth = 1.0
+        
         self.detailDescription.text = self.selectedApp?.appDescription
         self.developerInfo.text = self.selectedApp?.companyName
         self.categoryInfo.text = self.selectedApp?.primaryGenre
-        self.updatedInfo.text = Date.dateWithMediumStyleFrom((self.selectedApp?.currentVersionDate)!)
+        self.updatedInfo.text = Date.dateWithMediumStyleFrom(string: (self.selectedApp?.currentVersionDate)!)
         
+        //
         var iPhone = false
         var iPad = false
         for device in (self.selectedApp?.suportedDevices)! {
@@ -124,18 +142,20 @@ class DetailViewController: UIViewController {
         var compatible = ""
         
         if (iPhone && !iPad){
-            compatible = CompatibleiPhoneAndiPod
+            compatible = String(format: "%@ iPhone %@ iPod touch.", NSLocalizedString(Localisation.compatibleWith, comment: ""), NSLocalizedString(Localisation.and, comment: ""))
         } else if (!iPhone && iPad){
-            compatible = CompatibleiPad
+            compatible = String(format: "%@ iPad.", NSLocalizedString(Localisation.compatibleWith, comment: ""))
         } else if(iPhone && iPad){
-            compatible = CompatibleAll
+            compatible = String(format: "%@ iPhone, iPad %@ iPod touch.", NSLocalizedString(Localisation.compatibleWith, comment: ""), NSLocalizedString(Localisation.and, comment: ""))
         }
         
-        self.compatibilityInfo.text = String(format: MinVersion, (self.selectedApp?.minVersion)!, compatible)
-        self.ratingInfo.text = "Rated \((self.selectedApp?.contentAdvisoryRating)!)"
+        self.compatibilityInfo.text = String(format: NSLocalizedString(Localisation.formatRequirements, comment: ""), (self.selectedApp?.minVersion)!, compatible)
+        self.ratingInfo.text = "\(NSLocalizedString(Localisation.rated, comment: "")) \((self.selectedApp?.contentAdvisoryRating)!)"
         
+        // Repo with all country code in csv format with differenet locales: https://github.com/umpirsky/language-list/
         let bundlePath = Bundle(for: AppsViewController.self)
-        guard let path = bundlePath.path(forResource: CsvLanguagesPath, ofType: "csv") else {
+        guard let path = bundlePath.path(forResource: NSLocalizedString(Localisation.countriesCSV, comment: ""), ofType: "csv") else {
+
             return
         }
         
@@ -143,16 +163,21 @@ class DetailViewController: UIViewController {
         do {
             let content = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
             let csv = CSwiftV(with: content)
-            keyedRows = csv.rows
+            keyedRows = csv.rows as! [[String]]
+            
+            
         } catch _ as NSError {
-            print ("Error occurred")
             return
         }
+        
         var codeDictionary = [String : String]()
+        
         for row in keyedRows {
             codeDictionary[row[0]] = row[1]
         }
+        
         var arrayLanguage = [String]()
+        
         for code in (self.selectedApp?.languageCodes)! {
             let lowercased = (code as String).lowercased()
             if (codeDictionary[lowercased] != nil){
@@ -162,6 +187,19 @@ class DetailViewController: UIViewController {
         
         self.languagesInfo.text = String(format: "%@", (arrayLanguage.joined(separator: ", ")))
         self.collectionView.reloadData()
+
+    }
+
+    fileprivate func setTitles() {
+        self.title = NSLocalizedString(Localisation.appDetails, comment: "")
+        self.descriptionLabel.text = NSLocalizedString(Localisation.appDescription, comment: "")
+        self.infoLabel.text = NSLocalizedString(Localisation.info, comment: "")
+        self.developerLabel.text = NSLocalizedString(Localisation.developer, comment: "")
+        self.categoryLabel.text = NSLocalizedString(Localisation.category, comment: "")
+        self.updatedLabel.text = NSLocalizedString(Localisation.updated, comment: "")
+        self.ratingLabel.text = NSLocalizedString(Localisation.rating, comment: "")
+        self.compatibilityLabel.text = NSLocalizedString(Localisation.compatibility, comment: "")
+        self.languagesLabel.text = NSLocalizedString(Localisation.languages, comment: "")
     }
 
     // MARK : User actions
@@ -171,6 +209,7 @@ class DetailViewController: UIViewController {
             return
         }
         
+        
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
@@ -179,7 +218,7 @@ class DetailViewController: UIViewController {
     }
 }
 
-extension DetailViewController {
+extension DetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -189,11 +228,14 @@ extension DetailViewController {
         return self.selectedApp!.screenshots.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath : IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath : IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId,
+        let reuseIdentifier = "cellId"
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! DetailCollectionViewCell
       
+        
         Alamofire.request((self.selectedApp!.screenshots[indexPath.row])).responseImage { response in            
             if response.result.value != nil {
                 cell.imageView?.image = response.result.value
@@ -201,19 +243,34 @@ extension DetailViewController {
                 cell.imageView.layer.borderColor = UIColor(colorLiteralRed: 153.0/255.0, green: 137.0/255.0, blue: 132.0/255.0, alpha: 1.0).cgColor
             }
         }
+        
         return cell
     }
 }
 
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = collectionView.contentSize.height
+        if (self.selectedApp?.isIPadScreenshots)! {
+            return CGSize.init(width: 3.0 / 4.0 * height, height: height)
+        } else {
+            return CGSize.init(width: 9.0 / 16.0 * height, height: height)
+        }
+    }
+}
+
 extension Date {
-    static func dateWithMediumStyleFrom(_ string: String) -> String {
+    static func dateWithMediumStyleFrom(string: String) -> String {
         var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = DateFormat
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         guard let dateFromString = dateFormatter.date(from: string) else {
             return string
         }
+        
         dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
+        
         return dateFormatter.string(from: dateFromString)
     }
 }
+

@@ -18,6 +18,7 @@ let DetailSegue = "detailSegue"
 let AppCellId = "applicationCell"
 let NavigationViewControllerId = "NavigationViewControllerId"
 
+
 public enum DataSourceType {
     case array([String])
     case file(String)
@@ -25,11 +26,12 @@ public enum DataSourceType {
     case developer(String)
 }
 
-open class AppsViewController: UIViewController {
+public class AppsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundView: UIImageView!
     
-    open var type: DataSourceType? = .developer("1065810792") {
+    public var type: DataSourceType? = //.file("apps_ids") {
+        .developer("1065810792") {
         didSet {
             self.initDataSource();
         }
@@ -37,39 +39,70 @@ open class AppsViewController: UIViewController {
     
     fileprivate var dataSource : [AppusApp] = []
     fileprivate let settingsManager = SettingsManager.shared
-    
-    override open func viewDidLoad() {
+
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
+//        self.testColorScheme()
+        
+        self.title = NSLocalizedString(Localisation.applications, comment: "")
+            
         self.initDataSource()
         self.setupTheme()
         
         if let image = self.settingsManager.cancelButtonImage {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: image, style: .done, target: self, action: #selector(cancelTapped))
         } else {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: CancelButtonTitle, style: .done, target: self, action: #selector(cancelTapped))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString(Localisation.cancel, comment: ""), style: .done, target: self, action: #selector(cancelTapped))
         }
         
-        if (self.settingsManager.cancelButtonHidden == true){
-            self.navigationItem.rightBarButtonItem = nil
+       if (self.settingsManager.cancelButtonHidden == true){
+             //self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString(Localisation.cancel, comment: ""), style: .done, target: self, action: #selector(cancelTapped))
         }
         
         self.tableView.tableFooterView = UIView()
     }
     
-    open static func sharedAppsViewController () -> AppsViewController {
+//    fileprivate func testColorScheme() {
+//        self.settingsManager.isTransparentNavigationBar = true
+//        self.settingsManager.navigationBarColor = UIColor.red
+//        self.settingsManager.navigationTitleColor = UIColor.blue
+//        self.settingsManager.navigationItemColor = UIColor.green
+//        
+//        self.settingsManager.sectionTitleColor = UIColor.yellow
+//        self.settingsManager.backgroundColor = UIColor.black
+//        self.settingsManager.backgroundImage = UIImage(named: "background")
+//        
+//        self.settingsManager.textColor = UIColor.orange
+//        self.settingsManager.infoTextColor = UIColor.orange
+//        self.settingsManager.separatorColor = UIColor.orange
+//        self.settingsManager.purchaseButtonColor = UIColor.orange
+//    }
+    
+    public static func sharedAppsViewController () -> AppsViewController {
+        var storyboardName = "AppApp"
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            storyboardName.append("IPad")
+        }
+        
         let bundlePath = Bundle(for: AppsViewController.self)
         let pathResource = bundlePath.path(forResource: BundleName, ofType: "bundle")!
         let podBundle = Bundle(path: pathResource)
-        let appStoryboard = UIStoryboard(name: StoryboardName, bundle: podBundle)
+        let appStoryboard = UIStoryboard(name: storyboardName, bundle: podBundle)
         return appStoryboard.instantiateViewController(withIdentifier: CurrentViewControllerId) as! AppsViewController
     }
     
-    open static func sharedNavigationViewController () -> UINavigationController {
+    public static func sharedNavigationViewController () -> UINavigationController {
+        var storyboardName = "AppApp"
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            storyboardName.append("IPad")
+        }
+        
         let bundlePath = Bundle(for: AppsViewController.self)
         let pathResource = bundlePath.path(forResource: BundleName, ofType: "bundle")!
         let podBundle = Bundle(path: pathResource)
-        let appStoryboard = UIStoryboard(name: StoryboardName, bundle: podBundle)
+        let appStoryboard = UIStoryboard(name: storyboardName, bundle: podBundle)
         return appStoryboard.instantiateViewController(withIdentifier: NavigationViewControllerId) as! UINavigationController
     }
     
@@ -126,11 +159,13 @@ open class AppsViewController: UIViewController {
         if (self.tableView != nil){
             self.tableView.reloadData()
         }
+        
+        print("Data source \(dataSource)")
     }
     
     // MARK: Segue    
-    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == DetailSegue){
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "detailSegue"){
             let destination = segue.destination as! DetailViewController
             destination.selectedApp = self.dataSource[((sender as! IndexPath).row)]
         }
@@ -138,7 +173,7 @@ open class AppsViewController: UIViewController {
     
     // MARK: Actions
     func cancelTapped(_ sender: UIBarButtonItem) {
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        
     }
 }
 
@@ -148,8 +183,9 @@ extension AppsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cellId = "applicationCell"
         let appusApp = self.dataSource[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: AppCellId) as! ApplicationTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! ApplicationTableViewCell
         cell.appLabel?.text = appusApp.appName
         cell.ratingView.emptyImage = self.settingsManager.emptyRatingImage
         cell.ratingView.fullImage = self.settingsManager.filledRatingImage
@@ -159,8 +195,7 @@ extension AppsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.ratingView.editable = false
         cell.ratingView.floatRatings = true
         cell.countRating.text = String(format: "(%@)", appusApp.userRatingCount)
-        
-        Alamofire.request(appusApp.appImagePath).responseImage { response in
+        Alamofire.request(appusApp.appImagePathForCell).responseImage { response in
             debugPrint(response)
             debugPrint(response.result)
             
