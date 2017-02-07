@@ -10,13 +10,11 @@ import UIKit
 import AlamofireImage
 import Alamofire
 
-let CsvLanguagesPath = "languages_isoa2"
-let CompatibleiPhoneAndiPod = "Compatible with iPhone and iPod touch."
-let CompatibleiPad = "Compatible with iPad."
-let CompatibleAll = "Compatible with iPhone, iPad and iPod touch."
-let MinVersion = "Requires iOS %@ or later. %@"
 let CellId = "cellId"
 let DateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+let IPhoneString = "iPhone"
+let IPadString = "iPad"
+let IPodTouchString = "iPod touch"
 
 class DetailViewController: UIViewController {
     var selectedApp : AppusApp?
@@ -128,10 +126,10 @@ class DetailViewController: UIViewController {
         var iPhone = false
         var iPad = false
         for device in (self.selectedApp?.suportedDevices)! {
-            if ((device as String).range(of: "iPhone") != nil){
+            if ((device as String).range(of: IPhoneString) != nil){
                 iPhone = true
                 
-            } else if ((device as String).range(of: "iPad") != nil){
+            } else if ((device as String).range(of: IPadString) != nil){
                 iPad = true
             }
             
@@ -142,11 +140,11 @@ class DetailViewController: UIViewController {
         var compatible = ""
         
         if (iPhone && !iPad){
-            compatible = String(format: "%@ iPhone %@ iPod touch.", NSLocalizedString(Localisation.compatibleWith, comment: ""), NSLocalizedString(Localisation.and, comment: ""))
+            compatible = String(format: "%@ \(IPhoneString) %@ \(IPodTouchString).", NSLocalizedString(Localisation.compatibleWith, comment: ""), NSLocalizedString(Localisation.and, comment: ""))
         } else if (!iPhone && iPad){
-            compatible = String(format: "%@ iPad.", NSLocalizedString(Localisation.compatibleWith, comment: ""))
+            compatible = String(format: "%@ \(IPadString).", NSLocalizedString(Localisation.compatibleWith, comment: ""))
         } else if(iPhone && iPad){
-            compatible = String(format: "%@ iPhone, iPad %@ iPod touch.", NSLocalizedString(Localisation.compatibleWith, comment: ""), NSLocalizedString(Localisation.and, comment: ""))
+            compatible = String(format: "%@ \(IPhoneString), \(IPadString) %@ \(IPodTouchString).", NSLocalizedString(Localisation.compatibleWith, comment: ""), NSLocalizedString(Localisation.and, comment: ""))
         }
         
         self.compatibilityInfo.text = String(format: NSLocalizedString(Localisation.formatRequirements, comment: ""), (self.selectedApp?.minVersion)!, compatible)
@@ -230,7 +228,7 @@ extension DetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath : IndexPath) -> UICollectionViewCell {
         
-        let reuseIdentifier = "cellId"
+        let reuseIdentifier = CellId
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! DetailCollectionViewCell
@@ -262,7 +260,7 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
 extension Date {
     static func dateWithMediumStyleFrom(string: String) -> String {
         var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.dateFormat = DateFormat
         guard let dateFromString = dateFormatter.date(from: string) else {
             return string
         }

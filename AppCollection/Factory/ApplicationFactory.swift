@@ -14,24 +14,27 @@ import SwiftyJSON
 class ApplicationFactory: NSObject {
     
     fileprivate let baseURL = "https://itunes.apple.com/"
+    fileprivate let formatLookupURL = "%@lookup?id=%@&entity=software"
     
     public static let sharedFactory = ApplicationFactory()
     
     func getListOfApplicationsForDeveloper(with developerId : String, completion: @escaping (_ list  : [AppusApp]?) -> Void) {
-        let url = String(format: "%@lookup?id=%@&entity=software", baseURL, developerId)
+        let url = String(format: formatLookupURL, baseURL, developerId)
         self.getListOfApplicationsWith(url: url) { (dataSource) in
             guard var dataSource = dataSource else {
                 completion(nil)
                 return
             }
             
-            dataSource.removeFirst();
+            if dataSource.count > 0 {
+                dataSource.removeFirst();
+            }
             completion(dataSource)
         }
     }
     
     func getListOfApplications(by ids : [String], completion: @escaping (_ list  : [AppusApp]?) -> Void) {
-        let url = String(format: "%@lookup?id=%@&entity=software", baseURL, ids.joined(separator: ","))
+        let url = String(format: formatLookupURL, baseURL, ids.joined(separator: ","))
         self.getListOfApplicationsWith(url: url, completion: completion)
     }
     
@@ -81,18 +84,17 @@ class ApplicationFactory: NSObject {
         self.getListOfApplications(by: ids, completion:completion)
     }
     
-    fileprivate func getListOfApplicationsWith(url: String, completion: @escaping (_ list  : [AppusApp]?) -> Void) {
-        
+    fileprivate func getListOfApplicationsWith(url: String, completion: @escaping (_ list  : [AppusApp]?) -> Void) {        
         var url = url
-        
-        if let languageCode = Locale.current.languageCode {
-            url.append("&country=\(languageCode)")
+        if let countryCode = (Locale.current as NSLocale).object(forKey: .countryCode) as? String {
+            url.append("&country=\(countryCode)")
         }
         
         Alamofire.request(url).responseJSON { response in
             if response.result.isFailure {
                 completion(nil)
-                print("Error: \(response.result.error?.localizedDescription)")
+                
+                print("Error: \(response.result.error!.localizedDescription)")
                 return
             }
             
@@ -101,8 +103,12 @@ class ApplicationFactory: NSObject {
                 return
             }
             
-            guard let apps : NSArray = jsonDict["results"] as? NSArray else{
+            guard let apps : NSArray = jsonDict["results"] as? NSArray else {
                 completion(nil)
+                if let _ = jsonDict["errorMessage"] as? String {
+                    let url = (response.request?.url?.absoluteURL)!
+                    print("Error: invalid application(s) or developer id(s).\nURL: \(url)")
+                }
                 return
             }
             

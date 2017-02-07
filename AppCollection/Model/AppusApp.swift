@@ -10,6 +10,44 @@ import UIKit
 import SwiftyJSON
 
 class AppusApp: NSObject {
+    
+    fileprivate enum Keys {
+        // Image
+        static let appIconURL100 = "artworkUrl100"
+        static let appIconURL512 = "artworkUrl512"
+        static let screenshotsUrls = "screenshotUrls"
+        static let iPadScreenshotsUrls = "ipadScreenshotUrls"
+        
+        // Name
+        static let appName = "trackName"
+        static let appCensoredName = "trackCensoredName"
+        static let developerName = "artistName"
+        static let companyName = "sellerName"
+        
+        // Details
+        static let description = "description"
+        static let genres = "genres"
+        static let iTunesURL = "trackViewUrl"
+        static let formattedPrice = "formattedPrice"
+        static let currency = "currency"
+        static let languageCodes = "languageCodesISO2A"
+        static let version = "version"
+        static let minimumOsVersion = "minimumOsVersion"
+        static let supportedDevices = "supportedDevices"
+        
+        // Date
+        static let releaseDate = "releaseDate"
+        static let currentVersionReleaseDate = "currentVersionReleaseDate"
+        
+        // Rating
+        static let currentRating = "userRatingCountForCurrentVersion"
+        static let currrentAverageRating = "averageUserRatingForCurrentVersion"
+        static let averageUserRating = "averageUserRating"
+        static let contentRating = "trackContentRating"
+        static let contentAdvisoryRating = "contentAdvisoryRating"
+        static let userRatingCount = "userRatingCount"
+    }
+    
     // Image
     private(set) var appImagePath = ""
     private(set) var appImagePathForCell = ""
@@ -61,52 +99,52 @@ class AppusApp: NSObject {
         print (json)
         let idiom = UIDevice.current.userInterfaceIdiom
         
-        self.appImagePathForCell = json["artworkUrl100"].stringValue
+        self.appImagePathForCell = json[Keys.appIconURL100].stringValue
         
         if idiom == .pad {
-            self.appImagePath = json["artworkUrl512"].stringValue
+            self.appImagePath = json[Keys.appIconURL512].stringValue
             
-            if json["ipadScreenshotUrls"].count > 0 {
-                self.screenshots = json["ipadScreenshotUrls"].arrayValue.map({$0.stringValue})
+            if json[Keys.iPadScreenshotsUrls].count > 0 {
+                self.screenshots = json[Keys.iPadScreenshotsUrls].arrayValue.map({$0.stringValue})
                 self.isIPadScreenshots = true
             } else {
-                self.screenshots = json["screenshotUrls"].arrayValue.map({$0.stringValue})
+                self.screenshots = json[Keys.screenshotsUrls].arrayValue.map({$0.stringValue})
             }
         } else {
-            self.appImagePath = json["artworkUrl100"].stringValue
+            self.appImagePath = json[Keys.appIconURL100].stringValue
             
-            if json["screenshotUrls"].count > 0 {
-                self.screenshots = json["screenshotUrls"].arrayValue.map({$0.stringValue})
+            if json[Keys.screenshotsUrls].count > 0 {
+                self.screenshots = json[Keys.screenshotsUrls].arrayValue.map({$0.stringValue})
             } else {
-                self.screenshots = json["ipadScreenshotUrls"].arrayValue.map({$0.stringValue})
+                self.screenshots = json[Keys.iPadScreenshotsUrls].arrayValue.map({$0.stringValue})
                 self.isIPadScreenshots = true
             }
         }
         
-        self.appName = json["trackName"].stringValue
-        self.appCensoredName = json["trackCensoredName"].stringValue
-        self.companyName = json["artistName"].stringValue
-        self.sellerName = json["sellerName"].stringValue
+        self.appName = json[Keys.appName].stringValue
+        self.appCensoredName = json[Keys.appCensoredName].stringValue
+        self.companyName = json[Keys.developerName].stringValue
+        self.sellerName = json[Keys.companyName].stringValue
         
-        self.appDescription = json["description"].stringValue
-        self.genres = json["genres"].arrayValue.map({$0.stringValue})
-        self.primaryGenre = json["genres"][0].stringValue
-        self.url = json["trackViewUrl"].stringValue
-        self.price = json["formattedPrice"].stringValue
-        self.currency = json["currency"].stringValue
-        self.languageCodes = json["languageCodesISO2A"].arrayValue.map({$0.stringValue})
-        self.versionNumber = json["version"].stringValue
-        self.minVersion = json["minimumOsVersion"].stringValue
-        self.suportedDevices = json["supportedDevices"].arrayValue.map({$0.stringValue})
+        self.appDescription = json[Keys.description].stringValue
+        self.genres = json[Keys.genres].arrayValue.map({$0.stringValue})
+        self.primaryGenre = json[Keys.genres][0].stringValue
+        self.url = json[Keys.iTunesURL].stringValue
+        self.price = json[Keys.formattedPrice].stringValue
+        self.currency = json[Keys.currency].stringValue
+        self.languageCodes = json[Keys.languageCodes].arrayValue.map({$0.stringValue})
+        self.versionNumber = json[Keys.version].stringValue
+        self.minVersion = json[Keys.minimumOsVersion].stringValue
+        self.suportedDevices = json[Keys.supportedDevices].arrayValue.map({$0.stringValue})
         
-        self.date = json["releaseDate"].stringValue
-        self.currentVersionDate = json["currentVersionReleaseDate"].stringValue
+        self.date = json[Keys.releaseDate].stringValue
+        self.currentVersionDate = json[Keys.currentVersionReleaseDate].stringValue
         
-        self.currentRating = json["userRatingCountForCurrentVersion"].stringValue
-        self.currrentAverageRating = json["averageUserRatingForCurrentVersion"].stringValue
-        self.averageRating = json["averageUserRating"].stringValue
-        self.contentRating = json["trackContentRating"].stringValue
-        self.contentAdvisoryRating = json["contentAdvisoryRating"].stringValue
-        self.userRatingCount = json["userRatingCount"].stringValue
+        self.currentRating = json[Keys.currentRating].stringValue
+        self.currrentAverageRating = json[Keys.currrentAverageRating].stringValue
+        self.averageRating = json[Keys.averageUserRating].stringValue
+        self.contentRating = json[Keys.contentRating].stringValue
+        self.contentAdvisoryRating = json[Keys.contentAdvisoryRating].stringValue
+        self.userRatingCount = json[Keys.userRatingCount].stringValue
     }
 }

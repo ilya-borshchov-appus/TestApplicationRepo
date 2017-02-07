@@ -11,13 +11,14 @@ import AlamofireImage
 import Alamofire
 
 let BundleName = "AppCollection"
+let BundleType = "bundle"
+
 let StoryboardName = "AppApp"
+let StoryboardIPadName = "AppAppIPad"
 let CurrentViewControllerId = "AppsViewController"
-let CancelButtonTitle = "Cancel"
+let NavigationViewControllerId = "NavigationViewControllerId"
 let DetailSegue = "detailSegue"
 let AppCellId = "applicationCell"
-let NavigationViewControllerId = "NavigationViewControllerId"
-
 
 public enum DataSourceType {
     case array([String])
@@ -43,7 +44,7 @@ public class AppsViewController: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.testColorScheme()
+//      self.testColorScheme()
         
         self.title = NSLocalizedString(Localisation.applications, comment: "")
             
@@ -56,8 +57,9 @@ public class AppsViewController: UIViewController {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString(Localisation.cancel, comment: ""), style: .done, target: self, action: #selector(cancelTapped))
         }
         
-       if (self.settingsManager.cancelButtonHidden == true){
-             //self.navigationItem.rightBarButtonItem = nil
+        if (self.settingsManager.cancelButtonHidden == true){
+            self.navigationItem.rightBarButtonItem = nil
+        }else{
             self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString(Localisation.cancel, comment: ""), style: .done, target: self, action: #selector(cancelTapped))
         }
         
@@ -81,26 +83,26 @@ public class AppsViewController: UIViewController {
 //    }
     
     public static func sharedAppsViewController () -> AppsViewController {
-        var storyboardName = "AppApp"
+        var storyboardName = StoryboardName
         if UIDevice.current.userInterfaceIdiom == .pad {
-            storyboardName.append("IPad")
+            storyboardName = StoryboardIPadName
         }
         
         let bundlePath = Bundle(for: AppsViewController.self)
-        let pathResource = bundlePath.path(forResource: BundleName, ofType: "bundle")!
+        let pathResource = bundlePath.path(forResource: BundleName, ofType: BundleType)!
         let podBundle = Bundle(path: pathResource)
         let appStoryboard = UIStoryboard(name: storyboardName, bundle: podBundle)
         return appStoryboard.instantiateViewController(withIdentifier: CurrentViewControllerId) as! AppsViewController
     }
     
     public static func sharedNavigationViewController () -> UINavigationController {
-        var storyboardName = "AppApp"
+        var storyboardName = StoryboardName
         if UIDevice.current.userInterfaceIdiom == .pad {
-            storyboardName.append("IPad")
+            storyboardName = StoryboardIPadName
         }
         
         let bundlePath = Bundle(for: AppsViewController.self)
-        let pathResource = bundlePath.path(forResource: BundleName, ofType: "bundle")!
+        let pathResource = bundlePath.path(forResource: BundleName, ofType: BundleType)!
         let podBundle = Bundle(path: pathResource)
         let appStoryboard = UIStoryboard(name: storyboardName, bundle: podBundle)
         return appStoryboard.instantiateViewController(withIdentifier: NavigationViewControllerId) as! UINavigationController
@@ -165,7 +167,7 @@ public class AppsViewController: UIViewController {
     
     // MARK: Segue    
     override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "detailSegue"){
+        if (segue.identifier == DetailSegue){
             let destination = segue.destination as! DetailViewController
             destination.selectedApp = self.dataSource[((sender as! IndexPath).row)]
         }
@@ -183,7 +185,7 @@ extension AppsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cellId = "applicationCell"
+        let cellId = AppCellId
         let appusApp = self.dataSource[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! ApplicationTableViewCell
         cell.appLabel?.text = appusApp.appName
