@@ -11,7 +11,6 @@ import Foundation
 struct Localisation {
     static let applications = "Applications"
     static let appDetails = "Application details"
-    static let free = "Free"
     static let appDescription = "Description"
     static let info = "Information"
     static let developer = "Developer"
@@ -22,6 +21,8 @@ struct Localisation {
     static let languages = "Languages"
     static let rated = "Rated"    
     static let cancel = "Cancel"
+    
+    static let loading = "Loading"
     
     static let formatRequirements = "Requires iOS %@ or later. %@"
     static let compatibleWith = "Compatible with"

@@ -7,7 +7,6 @@
 
 "Applications" = "Приложения";
 "Application details" = "Детали приложения";
-"Free" = "Бесплатно";
 "Description" = "Описание";
 "Information" = "Информация";
 "Developer" = "Разработчик";
@@ -18,7 +17,7 @@
 "Languages" = "Языки";
 "Rated" = "Возраст";
 "Cancel" = "Отмена";
-
+"Loading" = "Загрузка";
 "Requires iOS %@ or later. %@" = "Требуется iOS %@ или более поздняя версия. %@";
 "Compatible with" = "Совместимо с";
 "and" = "и";

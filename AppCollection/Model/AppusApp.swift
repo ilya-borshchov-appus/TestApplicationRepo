@@ -49,40 +49,40 @@ class AppusApp: NSObject {
     }
     
     // Image
-    private(set) var appImagePath = ""
-    private(set) var appImagePathForCell = ""
-    private(set) var screenshots : [String] = []
-    private(set) var isIPadScreenshots = false
+    fileprivate(set) var appImagePath = ""
+    fileprivate(set) var appImagePathForCell = ""
+    fileprivate(set) var screenshots : [String] = []
+    fileprivate(set) var isIPadScreenshots = false
     
     // Name
-    private(set) var appName = ""
-    private(set) var appCensoredName = ""
-    private(set) var companyName = ""
-    private(set) var sellerName = ""
+    fileprivate(set) var appName = ""
+    fileprivate(set) var appCensoredName = ""
+    fileprivate(set) var companyName = ""
+    fileprivate(set) var sellerName = ""
     
     // Details
-    private(set) var appDescription = ""
-    private(set) var genres : [String] = []
-    private(set) var primaryGenre = ""
-    private(set) var url = ""
-    private(set) var price = ""
-    private(set) var currency = ""
-    private(set) var languageCodes : [String] = []
-    private(set) var versionNumber = ""
-    private(set) var minVersion = ""
-    private(set) var suportedDevices : [String] = []
+    fileprivate(set) var appDescription = ""
+    fileprivate(set) var genres : [String] = []
+    fileprivate(set) var primaryGenre = ""
+    fileprivate(set) var url = ""
+    fileprivate(set) var price = ""
+    fileprivate(set) var currency = ""
+    fileprivate(set) var languageCodes : [String] = []
+    fileprivate(set) var versionNumber = ""
+    fileprivate(set) var minVersion = ""
+    fileprivate(set) var suportedDevices : [String] = []
     
     // Date
-    private(set) var date = ""
-    private(set) var currentVersionDate = ""
+    fileprivate(set) var date = ""
+    fileprivate(set) var currentVersionDate = ""
     
     // Rating
-    private(set) var currentRating = ""
-    private(set) var currrentAverageRating = ""
-    private(set) var averageRating = ""
-    private(set) var contentRating = ""
-    private(set) var contentAdvisoryRating = ""
-    private(set) var userRatingCount = ""
+    fileprivate(set) var currentRating = ""
+    fileprivate(set) var currrentAverageRating = ""
+    fileprivate(set) var averageRating = ""
+    fileprivate(set) var contentRating = ""
+    fileprivate(set) var contentAdvisoryRating = ""
+    fileprivate(set) var userRatingCount = ""
     
     override var description : String {
         var text = "Name: \(self.appName)\n"
@@ -95,7 +95,7 @@ class AppusApp: NSObject {
         return text
     }
 
-    func initWith(json: JSON) {
+    func initWith(_ json: JSON) {
         print (json)
         let idiom = UIDevice.current.userInterfaceIdiom
         
@@ -125,7 +125,6 @@ class AppusApp: NSObject {
         self.appCensoredName = json[Keys.appCensoredName].stringValue
         self.companyName = json[Keys.developerName].stringValue
         self.sellerName = json[Keys.companyName].stringValue
-        
         self.appDescription = json[Keys.description].stringValue
         self.genres = json[Keys.genres].arrayValue.map({$0.stringValue})
         self.primaryGenre = json[Keys.genres][0].stringValue
@@ -136,15 +135,46 @@ class AppusApp: NSObject {
         self.versionNumber = json[Keys.version].stringValue
         self.minVersion = json[Keys.minimumOsVersion].stringValue
         self.suportedDevices = json[Keys.supportedDevices].arrayValue.map({$0.stringValue})
-        
         self.date = json[Keys.releaseDate].stringValue
         self.currentVersionDate = json[Keys.currentVersionReleaseDate].stringValue
-        
         self.currentRating = json[Keys.currentRating].stringValue
         self.currrentAverageRating = json[Keys.currrentAverageRating].stringValue
         self.averageRating = json[Keys.averageUserRating].stringValue
         self.contentRating = json[Keys.contentRating].stringValue
         self.contentAdvisoryRating = json[Keys.contentAdvisoryRating].stringValue
         self.userRatingCount = json[Keys.userRatingCount].stringValue
+    }
+    
+    func initWith(dictionary: [String: Any]) {
+        
+        self.appImagePath = dictionary[Keys.appIconURL100] as? String ?? ""
+        self.screenshots = dictionary[Keys.screenshotsUrls] as? [String] ?? []
+        
+        if (self.screenshots.count == 0){
+            self.screenshots = dictionary[Keys.iPadScreenshotsUrls] as? [String] ?? []
+        }
+        
+        self.appName = dictionary[Keys.appName] as? String ?? ""
+        self.appCensoredName = dictionary[Keys.appCensoredName] as? String ?? ""
+        self.companyName = dictionary[Keys.developerName] as? String ?? ""
+        self.sellerName = dictionary[Keys.companyName] as? String ?? ""
+        self.appDescription = dictionary[Keys.description] as? String ?? ""
+        self.genres = dictionary[Keys.genres] as? [String] ?? []
+        self.primaryGenre =  ((dictionary[Keys.genres] as! Array)[0] as? String)! 
+        self.url = dictionary[Keys.iTunesURL] as? String ?? ""
+        self.price = dictionary[Keys.formattedPrice] as? String ?? ""
+        self.currency = dictionary[Keys.currency] as? String ?? ""
+        self.languageCodes = dictionary[Keys.languageCodes] as? [String] ?? []
+        self.versionNumber = dictionary[Keys.version] as? String ?? ""
+        self.minVersion = dictionary[Keys.minimumOsVersion] as? String ?? ""
+        self.suportedDevices = dictionary[Keys.supportedDevices] as? [String] ?? []
+        self.date = dictionary[Keys.releaseDate] as? String ?? ""
+        self.currentVersionDate = dictionary[Keys.currentVersionReleaseDate] as? String ?? ""
+        self.currentRating = dictionary[Keys.currentRating] as? String ?? ""
+        self.currrentAverageRating = dictionary[Keys.currrentAverageRating] as? String ?? ""
+        self.averageRating = dictionary[Keys.averageUserRating] as? String ?? ""
+        self.contentRating = dictionary[Keys.contentRating] as? String ?? ""
+        self.contentAdvisoryRating = dictionary[Keys.contentAdvisoryRating] as? String ?? ""
+        self.userRatingCount = dictionary[Keys.userRatingCount] as? String ?? ""
     }
 }

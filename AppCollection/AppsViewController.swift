@@ -9,6 +9,7 @@
 import UIKit
 import AlamofireImage
 import Alamofire
+import PKHUD
 
 let BundleName = "AppCollection"
 let BundleType = "bundle"
@@ -27,11 +28,11 @@ public enum DataSourceType {
     case developer(String)
 }
 
-public class AppsViewController: UIViewController {
+open class AppsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundView: UIImageView!
     
-    public var type: DataSourceType? = //.file("apps_ids") {
+    open var type: DataSourceType? = //.file("apps_ids") {
         .developer("1065810792") {
         didSet {
             self.initDataSource();
@@ -41,7 +42,7 @@ public class AppsViewController: UIViewController {
     fileprivate var dataSource : [AppusApp] = []
     fileprivate let settingsManager = SettingsManager.shared
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
 //      self.testColorScheme()
@@ -82,7 +83,7 @@ public class AppsViewController: UIViewController {
 //        self.settingsManager.purchaseButtonColor = UIColor.orange
 //    }
     
-    public static func sharedAppsViewController () -> AppsViewController {
+    open static func sharedAppsViewController () -> AppsViewController {
         var storyboardName = StoryboardName
         if UIDevice.current.userInterfaceIdiom == .pad {
             storyboardName = StoryboardIPadName
@@ -95,7 +96,7 @@ public class AppsViewController: UIViewController {
         return appStoryboard.instantiateViewController(withIdentifier: CurrentViewControllerId) as! AppsViewController
     }
     
-    public static func sharedNavigationViewController () -> UINavigationController {
+    open static func sharedNavigationViewController () -> UINavigationController {
         var storyboardName = StoryboardName
         if UIDevice.current.userInterfaceIdiom == .pad {
             storyboardName = StoryboardIPadName
@@ -140,11 +141,14 @@ public class AppsViewController: UIViewController {
             return
         }
         
+        PKHUD.sharedHUD.contentView = PKHUDProgressView(title: NSLocalizedString(Localisation.loading, comment: ""))
+        PKHUD.sharedHUD.show()
+        
         switch type {
         case .array(let ids):
             ApplicationFactory.sharedFactory.getListOfApplications(by: ids, completion: self.completion)
         case .file(let name):
-            ApplicationFactory.sharedFactory.getListOfApplicationsFromFileWith(name: name, completion: self.completion)
+            ApplicationFactory.sharedFactory.getListOfApplicationsFromFileWith(name, completion: self.completion)
         case .url(let url):
             ApplicationFactory.sharedFactory.getListOfApplicationsFromCloudWithFile(url, completion: self.completion)
         case .developer(let id):
@@ -162,11 +166,13 @@ public class AppsViewController: UIViewController {
             self.tableView.reloadData()
         }
         
+        PKHUD.sharedHUD.hide()
+        
         print("Data source \(dataSource)")
     }
     
     // MARK: Segue    
-    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == DetailSegue){
             let destination = segue.destination as! DetailViewController
             destination.selectedApp = self.dataSource[((sender as! IndexPath).row)]
@@ -197,12 +203,13 @@ extension AppsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.ratingView.editable = false
         cell.ratingView.floatRatings = true
         cell.countRating.text = String(format: "(%@)", appusApp.userRatingCount)
-        Alamofire.request(appusApp.appImagePathForCell).responseImage { response in
+        Alamofire.request(appusApp.appImagePathForCell).responseData { response in
             debugPrint(response)
             debugPrint(response.result)
             
             if response.result.value != nil {
-                cell.appImage?.image = response.result.value
+                let image = UIImage(data: response.result.value!)
+                cell.appImage?.image = image
                 cell.appImage?.layer.cornerRadius = 7.0
                 cell.appImage?.layer.masksToBounds = true
             }

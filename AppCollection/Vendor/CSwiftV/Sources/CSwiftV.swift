@@ -21,16 +21,16 @@ extension String {
 }
 
 // MARK: Parser
-public class CSwiftV {
+open class CSwiftV {
 
     /// The number of columns in the data
-    private let columnCount: Int
+    fileprivate let columnCount: Int
     /// The headers from the data, an Array of String
-    public let headers: [String]
+    open let headers: [String]
     /// An array of Dictionaries with the values of each row keyed to the header
-    public let keyedRows: [[String: String]]?
+    open let keyedRows: [[String: String]]?
     // An Array of the rows in an Array of String form, equivalent to keyedRows, but without the keys
-    public let rows: [[String]]
+    open let rows: [[String]]
     
     /// Creates an instance containing the data extracted from the `with` String
     /// - Parameter with: The String obtained from reading the csv file.
@@ -85,7 +85,7 @@ public class CSwiftV {
     }
 
     /// Tries to preserve the parity between open and close characters for different formats. Analizes the escape character count to do so
-    private static func split(_ separator: String, string: String) -> [String] {
+    fileprivate static func split(_ separator: String, string: String) -> [String] {
         func oddNumberOfQuotes(_ string: String) -> Bool {
             return string.components(separatedBy: "\"").count % 2 == 0
         }

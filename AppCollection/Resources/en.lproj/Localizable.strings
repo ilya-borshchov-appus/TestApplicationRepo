@@ -7,7 +7,6 @@
 
 "Applications" = "Applications";
 "Application details" = "Application details";
-"Free" = "Free";
 "Description" = "Description";
 "Information" = "Information";
 "Developer" = "Developer";
@@ -18,7 +17,7 @@
 "Languages" = "Languages";
 "Rated" = "Rated";
 "Cancel" = "Cancel";
-
+"Loading" = "Loading";
 "Requires iOS %@ or later. %@" = "Requires iOS %@ or later. %@";
 "Compatible with" = "Compatible with";
 "and" = "and";

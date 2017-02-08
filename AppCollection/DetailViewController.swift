@@ -86,12 +86,13 @@ class DetailViewController: UIViewController {
     fileprivate func initLayout() {
         self.appName?.text = selectedApp?.appName
         
-        Alamofire.request((selectedApp?.appImagePath)!).responseImage { response in
+        Alamofire.request((selectedApp?.appImagePath)!).responseData { response in
             debugPrint(response)
             debugPrint(response.result)
             
             if response.result.value != nil {
-                self.appImage?.image = response.result.value
+                let image = UIImage(data: response.result.value!)
+                self.appImage?.image = image
                 self.appImage.layer.cornerRadius = 15.0
                 self.appImage.layer.masksToBounds = true
             }
@@ -107,11 +108,11 @@ class DetailViewController: UIViewController {
         self.appRating.editable = false
         self.appRating.floatRatings = true
         
-        if (self.selectedApp?.price == "0"){
+        /*if (self.selectedApp?.price == "0"){
             self.iTunesButton.setTitle(NSLocalizedString(Localisation.free, comment: ""), for: .normal)
-        }else{
+        }else{*/
             self.iTunesButton.setTitle(self.selectedApp?.price, for: .normal)
-        }
+        //}
         
         self.iTunesButton.layer.cornerRadius = 6.0
         self.iTunesButton.layer.borderColor = self.iTunesButton.currentTitleColor.cgColor
@@ -120,7 +121,7 @@ class DetailViewController: UIViewController {
         self.detailDescription.text = self.selectedApp?.appDescription
         self.developerInfo.text = self.selectedApp?.companyName
         self.categoryInfo.text = self.selectedApp?.primaryGenre
-        self.updatedInfo.text = Date.dateWithMediumStyleFrom(string: (self.selectedApp?.currentVersionDate)!)
+        self.updatedInfo.text = Date.dateWithMediumStyleFrom((self.selectedApp?.currentVersionDate)!)
         
         //
         var iPhone = false
@@ -161,7 +162,7 @@ class DetailViewController: UIViewController {
         do {
             let content = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
             let csv = CSwiftV(with: content)
-            keyedRows = csv.rows as! [[String]]
+            keyedRows = csv.rows 
             
             
         } catch _ as NSError {
@@ -234,9 +235,10 @@ extension DetailViewController: UICollectionViewDataSource {
                                                       for: indexPath) as! DetailCollectionViewCell
       
         
-        Alamofire.request((self.selectedApp!.screenshots[indexPath.row])).responseImage { response in            
+        Alamofire.request((self.selectedApp!.screenshots[indexPath.row])).responseData { response in            
             if response.result.value != nil {
-                cell.imageView?.image = response.result.value
+                let image = UIImage(data: response.result.value!)
+                cell.imageView?.image = image
                 cell.imageView.layer.borderWidth = 1.0
                 cell.imageView.layer.borderColor = UIColor(colorLiteralRed: 153.0/255.0, green: 137.0/255.0, blue: 132.0/255.0, alpha: 1.0).cgColor
             }
@@ -258,7 +260,7 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension Date {
-    static func dateWithMediumStyleFrom(string: String) -> String {
+    static func dateWithMediumStyleFrom(_ string: String) -> String {
         var dateFormatter = DateFormatter()
         dateFormatter.dateFormat = DateFormat
         guard let dateFromString = dateFormatter.date(from: string) else {

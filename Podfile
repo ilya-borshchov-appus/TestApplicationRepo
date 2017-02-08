@@ -8,4 +8,6 @@ target 'AppCollection' do
     pod 'Alamofire'
     pod 'AlamofireImage'
     pod 'SwiftyJSON'
+    pod 'PKHUD', '~> 4.0'
+
 end
