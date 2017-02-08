@@ -29,6 +29,7 @@ s.resource_bundles = {
   s.dependency "Alamofire"
   s.dependency "AlamofireImage"
   s.dependency "SwiftyJSON"
+  s.dependency "PKHUD"
   s.requires_arc = true
 end
 
