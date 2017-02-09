@@ -42,12 +42,29 @@ open class AppsViewController: UIViewController {
     fileprivate var dataSource : [AppusApp] = []
     fileprivate let settingsManager = SettingsManager.shared
 
+    fileprivate var _podBundle : Bundle? = nil
+    
+    internal var podBundle : Bundle{
+        get{
+            if (!(_podBundle != nil)){
+                let bundlePath = Bundle(for: AppsViewController.self)
+                let pathResource = bundlePath.path(forResource: BundleName, ofType: BundleType)!
+                _ = Bundle(path: pathResource)
+                _podBundle = Bundle(path: pathResource)
+            }
+            return _podBundle!
+        }
+        set{
+            
+        }
+    }
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
         
 //      self.testColorScheme()
         
-        self.title = NSLocalizedString(Localisation.applications, comment: "")
+        self.title = NSLocalizedString(Localisation.applications, tableName: nil, bundle: podBundle, value: "", comment: "")
             
         self.initDataSource()
         self.setupTheme()
@@ -55,13 +72,13 @@ open class AppsViewController: UIViewController {
         if let image = self.settingsManager.cancelButtonImage {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: image, style: .done, target: self, action: #selector(cancelTapped))
         } else {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString(Localisation.cancel, comment: ""), style: .done, target: self, action: #selector(cancelTapped))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString(Localisation.cancel, tableName: nil, bundle: podBundle, value: "", comment: ""), style: .done, target: self, action: #selector(cancelTapped))
         }
         
         if (self.settingsManager.cancelButtonHidden == true){
             self.navigationItem.rightBarButtonItem = nil
         }else{
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString(Localisation.cancel, comment: ""), style: .done, target: self, action: #selector(cancelTapped))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString(Localisation.cancel, tableName: nil, bundle: podBundle, value: "", comment: ""), style: .done, target: self, action: #selector(cancelTapped))
         }
         
         self.tableView.tableFooterView = UIView()
@@ -141,7 +158,7 @@ open class AppsViewController: UIViewController {
             return
         }
         
-        PKHUD.sharedHUD.contentView = PKHUDProgressView(title: NSLocalizedString(Localisation.loading, comment: ""))
+        PKHUD.sharedHUD.contentView = PKHUDProgressView(title: NSLocalizedString(Localisation.loading, tableName: nil, bundle: podBundle, value: "", comment: ""))
         PKHUD.sharedHUD.show()
         
         switch type {

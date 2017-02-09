@@ -52,6 +52,23 @@ class DetailViewController: UIViewController {
     
     fileprivate let settingsManager = SettingsManager.shared
     
+    fileprivate var _podBundle : Bundle? = nil
+    
+    internal var podBundle : Bundle{
+        get{
+            if (!(_podBundle != nil)){
+                let bundlePath = Bundle(for: AppsViewController.self)
+                let pathResource = bundlePath.path(forResource: BundleName, ofType: BundleType)!
+                _ = Bundle(path: pathResource)
+                _podBundle = Bundle(path: pathResource)
+            }
+            return _podBundle!
+        }
+        set{
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -141,19 +158,19 @@ class DetailViewController: UIViewController {
         var compatible = ""
         
         if (iPhone && !iPad){
-            compatible = String(format: "%@ \(IPhoneString) %@ \(IPodTouchString).", NSLocalizedString(Localisation.compatibleWith, comment: ""), NSLocalizedString(Localisation.and, comment: ""))
+            compatible = String(format: "%@ \(IPhoneString) %@ \(IPodTouchString).", NSLocalizedString(Localisation.compatibleWith, tableName: nil, bundle: podBundle, value: "", comment: ""), NSLocalizedString(Localisation.and, tableName: nil, bundle: podBundle, value: "", comment: ""))
         } else if (!iPhone && iPad){
-            compatible = String(format: "%@ \(IPadString).", NSLocalizedString(Localisation.compatibleWith, comment: ""))
+            compatible = String(format: "%@ \(IPadString).", NSLocalizedString(Localisation.compatibleWith, tableName: nil, bundle: podBundle, value: "", comment: ""))
         } else if(iPhone && iPad){
-            compatible = String(format: "%@ \(IPhoneString), \(IPadString) %@ \(IPodTouchString).", NSLocalizedString(Localisation.compatibleWith, comment: ""), NSLocalizedString(Localisation.and, comment: ""))
+            compatible = String(format: "%@ \(IPhoneString), \(IPadString) %@ \(IPodTouchString).", NSLocalizedString(Localisation.compatibleWith, tableName: nil, bundle: podBundle, value: "", comment: ""), NSLocalizedString(Localisation.and, tableName: nil, bundle: podBundle, value: "", comment: ""))
         }
         
-        self.compatibilityInfo.text = String(format: NSLocalizedString(Localisation.formatRequirements, comment: ""), (self.selectedApp?.minVersion)!, compatible)
-        self.ratingInfo.text = "\(NSLocalizedString(Localisation.rated, comment: "")) \((self.selectedApp?.contentAdvisoryRating)!)"
+        self.compatibilityInfo.text = String(format: NSLocalizedString(Localisation.formatRequirements, tableName: nil, bundle: podBundle, value: "", comment: ""), (self.selectedApp?.minVersion)!, compatible)
+        self.ratingInfo.text = "\(NSLocalizedString(Localisation.rated, tableName: nil, bundle: podBundle, value: "", comment: "")) \((self.selectedApp?.contentAdvisoryRating)!)"
         
         // Repo with all country code in csv format with differenet locales: https://github.com/umpirsky/language-list/
         let bundlePath = Bundle(for: AppsViewController.self)
-        guard let path = bundlePath.path(forResource: NSLocalizedString(Localisation.countriesCSV, comment: ""), ofType: "csv") else {
+        guard let path = bundlePath.path(forResource: NSLocalizedString(Localisation.countriesCSV, tableName: nil, bundle: podBundle, value: "", comment: ""), ofType: "csv") else {
 
             return
         }
@@ -190,15 +207,15 @@ class DetailViewController: UIViewController {
     }
 
     fileprivate func setTitles() {
-        self.title = NSLocalizedString(Localisation.appDetails, comment: "")
-        self.descriptionLabel.text = NSLocalizedString(Localisation.appDescription, comment: "")
-        self.infoLabel.text = NSLocalizedString(Localisation.info, comment: "")
-        self.developerLabel.text = NSLocalizedString(Localisation.developer, comment: "")
-        self.categoryLabel.text = NSLocalizedString(Localisation.category, comment: "")
-        self.updatedLabel.text = NSLocalizedString(Localisation.updated, comment: "")
-        self.ratingLabel.text = NSLocalizedString(Localisation.rating, comment: "")
-        self.compatibilityLabel.text = NSLocalizedString(Localisation.compatibility, comment: "")
-        self.languagesLabel.text = NSLocalizedString(Localisation.languages, comment: "")
+        self.title = NSLocalizedString(Localisation.appDetails, tableName: nil, bundle: podBundle, value: "", comment: "")
+        self.descriptionLabel.text = NSLocalizedString(Localisation.appDescription, tableName: nil, bundle: podBundle, value: "", comment: "")
+        self.infoLabel.text = NSLocalizedString(Localisation.info, tableName: nil, bundle: podBundle, value: "", comment: "")
+        self.developerLabel.text = NSLocalizedString(Localisation.developer, tableName: nil, bundle: podBundle, value: "", comment: "")
+        self.categoryLabel.text = NSLocalizedString(Localisation.category, tableName: nil, bundle: podBundle, value: "", comment: "")
+        self.updatedLabel.text = NSLocalizedString(Localisation.updated, tableName: nil, bundle: podBundle, value: "", comment: "")
+        self.ratingLabel.text = NSLocalizedString(Localisation.rating, tableName: nil, bundle: podBundle, value: "", comment: "")
+        self.compatibilityLabel.text = NSLocalizedString(Localisation.compatibility, tableName: nil, bundle: podBundle, value: "", comment: "")
+        self.languagesLabel.text = NSLocalizedString(Localisation.languages, tableName: nil, bundle: podBundle, value: "", comment: "")
     }
 
     // MARK : User actions
@@ -273,4 +290,3 @@ extension Date {
         return dateFormatter.string(from: dateFromString)
     }
 }
-
