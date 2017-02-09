@@ -17,11 +17,12 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "9.0"
   s.source       = { :git => "https://github.com/ilya-borshchov-appus/TestApplicationRepo.git", :tag => "0.0.4" }
 
+  s.exclude_files = 'AppCollection/**/*.{AppDelegate.swift, IMG_7827.png, IMG_7828.png, IMG_7829.png}'
   s.source_files = "AppCollection/**/*.{swift}"
   s.resources = "AppCollection/**/*.{png,jpeg,jpg,txt,csv}"
   s.frameworks             = 'Foundation', 'UIKit'
 
-s.resource_bundles = {
+  s.resource_bundles = {
 'AppCollection' => ['AppCollection/**/*.{lproj,storyboard}']
 }
 
