@@ -5,8 +5,9 @@ Made by [![Appus Studio](https://github.com/appus-studio/Appus-Splash/blob/maste
 
 ‘App Collection’ show list of applications from iTunes with details.
 
-![App Collection: Show list of applications from iTunes with details](https://github.com/ilya-borshchov-appus/TestApplicationRepo/blob/master/AppusApplications/Resources/IMG_7827.PNG)
-![App Collection: Show list of applications from iTunes with details](https://github.com/ilya-borshchov-appus/TestApplicationRepo/blob/master/AppusApplications/Resources/IMG_7828.PNG)
+
+![App Collection: Show list of applications from iTunes with details](https://github.com/ilya-borshchov-appus/TestApplicationRepo/tree/master/AppCollection/Resources/IMG_7827.PNG)
+![App Collection: Show list of applications from iTunes with details](https://github.com/ilya-borshchov-appus/TestApplicationRepo/tree/master/AppCollection/Resources/IMG_7828.PNG)
 
 #Setup
 ```Ruby
